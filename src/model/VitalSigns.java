@@ -10,33 +10,33 @@ package model;
  */
 public class VitalSigns {
     
-     private float temp;
-     private float bp;
-     private float pulse;
+     private double temp;
+     private double bp;
+     private double pulse;
      private String diagnosis;
      private String note;
 
-    public float getTemp() {
+    public double getTemp() {
         return temp;
     }
 
-    public void setTemp(float temp) {
+    public void setTemp(double temp) {
         this.temp = temp;
     }
 
-    public float getBp() {
+    public double getBp() {
         return bp;
     }
 
-    public void setBp(float bp) {
+    public void setBp(double bp) {
         this.bp = bp;
     }
 
-    public float getPulse() {
+    public double getPulse() {
         return pulse;
     }
 
-    public void setPulse(float pulse) {
+    public void setPulse(double pulse) {
         this.pulse = pulse;
     }
 
