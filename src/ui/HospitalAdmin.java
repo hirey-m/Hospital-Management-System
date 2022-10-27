@@ -4,16 +4,20 @@
  */
 package ui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author manavhirey
  */
-public class DoctorDashboard extends javax.swing.JFrame {
+public class HospitalAdmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form DoctorDashboard
+     * Creates new form HospitalAdmin
      */
-    public DoctorDashboard() {
+    public static JFrame hospitalAdmin;
+    
+    public HospitalAdmin() {
         initComponents();
     }
 
@@ -31,6 +35,9 @@ public class DoctorDashboard extends javax.swing.JFrame {
         historyBtn = new javax.swing.JButton();
         appBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
+        createDoc = new javax.swing.JButton();
+        createPatient = new javax.swing.JButton();
+        viewDoctor = new javax.swing.JButton();
         viewPatient = new javax.swing.JButton();
         rightPane = new javax.swing.JPanel();
 
@@ -51,8 +58,34 @@ public class DoctorDashboard extends javax.swing.JFrame {
         });
 
         logoutBtn.setText("Logout");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
 
-        viewPatient.setText("View Patient");
+        createDoc.setText("Create Doctor");
+        createDoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createDocActionPerformed(evt);
+            }
+        });
+
+        createPatient.setText("Create Patient");
+        createPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createPatientActionPerformed(evt);
+            }
+        });
+
+        viewDoctor.setText("View Doctors");
+        viewDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewDoctorActionPerformed(evt);
+            }
+        });
+
+        viewPatient.setText("View Patients");
         viewPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewPatientActionPerformed(evt);
@@ -69,22 +102,31 @@ public class DoctorDashboard extends javax.swing.JFrame {
                     .addComponent(appBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(historyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(createDoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPaneLayout.createSequentialGroup()
-                        .addComponent(viewPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(createPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(viewDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         leftPaneLayout.setVerticalGroup(
             leftPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPaneLayout.createSequentialGroup()
-                .addGap(234, 234, 234)
+                .addGap(129, 129, 129)
                 .addComponent(viewPatient)
+                .addGap(18, 18, 18)
+                .addComponent(viewDoctor)
+                .addGap(18, 18, 18)
+                .addComponent(createPatient)
+                .addGap(18, 18, 18)
+                .addComponent(createDoc)
                 .addGap(18, 18, 18)
                 .addComponent(historyBtn)
                 .addGap(18, 18, 18)
                 .addComponent(appBtn)
-                .addGap(57, 57, 57)
+                .addGap(97, 97, 97)
                 .addComponent(logoutBtn)
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(leftPane);
@@ -108,14 +150,14 @@ public class DoctorDashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(splitPane)
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(splitPane)
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -134,10 +176,34 @@ public class DoctorDashboard extends javax.swing.JFrame {
         splitPane.setRightComponent(appointment);
     }//GEN-LAST:event_appBtnActionPerformed
 
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        LoginFrame.loginFrame.setVisible(true);
+        hospitalAdmin.setVisible(false);
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void createDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createDocActionPerformed
+        // TODO add your handling code here:
+        CreateDoc createDoctor = new CreateDoc();
+        splitPane.setRightComponent(createDoctor);
+    }//GEN-LAST:event_createDocActionPerformed
+
+    private void createPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPatientActionPerformed
+        // TODO add your handling code here:
+        CreatePatient patient = new CreatePatient();
+        splitPane.setRightComponent(patient);
+    }//GEN-LAST:event_createPatientActionPerformed
+
+    private void viewDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDoctorActionPerformed
+        // TODO add your handling code here:
+        DoctorView dView = new DoctorView();
+        splitPane.setRightComponent(dView);
+    }//GEN-LAST:event_viewDoctorActionPerformed
+
     private void viewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientActionPerformed
         // TODO add your handling code here:
-        PatientView patient = new PatientView();
-        splitPane.setRightComponent(patient);
+        PatientView view = new PatientView();
+        splitPane.setRightComponent(view);
     }//GEN-LAST:event_viewPatientActionPerformed
 
     /**
@@ -157,31 +223,35 @@ public class DoctorDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DoctorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DoctorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DoctorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DoctorDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HospitalAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DoctorDashboard().setVisible(true);
+                hospitalAdmin = new HospitalAdmin();
+                new HospitalAdmin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton appBtn;
+    private javax.swing.JButton createDoc;
+    private javax.swing.JButton createPatient;
     private javax.swing.JButton historyBtn;
     private javax.swing.JPanel leftPane;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JPanel rightPane;
     private javax.swing.JSplitPane splitPane;
+    private javax.swing.JButton viewDoctor;
     private javax.swing.JButton viewPatient;
     // End of variables declaration//GEN-END:variables
 }
