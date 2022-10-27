@@ -13,6 +13,7 @@ public class Doctor extends Person{
     private String empId;
     private String dateOfJoining;
     private Hospital nameHospital;
+    private String specialization;
     
     public Doctor(long ssn, String name, String dob, long phoneNo, String email, House address, String username, String password,String empId, String dateOfJoining, Hospital nameHospital){
         super(ssn,name,dob,phoneNo,email,address,username,password);
@@ -20,6 +21,7 @@ public class Doctor extends Person{
         this.empId = empId;
         this.dateOfJoining = dateOfJoining;
         this.nameHospital = nameHospital;
+        this.specialization = specialization;
         
     }
 
@@ -46,6 +48,16 @@ public class Doctor extends Person{
     public void setNameHospital(Hospital nameHospital) {
         this.nameHospital = nameHospital;
     }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+    
+    
     
     
 }

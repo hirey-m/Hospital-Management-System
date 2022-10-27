@@ -36,6 +36,8 @@ public class LoginFrame extends javax.swing.JFrame {
         usernameTxt = new javax.swing.JTextField();
         passwordTxt = new javax.swing.JPasswordField();
         backLogin = new javax.swing.JButton();
+        admin = new javax.swing.JButton();
+        patient = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +64,22 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
+        admin.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        admin.setText("Admin");
+        admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminActionPerformed(evt);
+            }
+        });
+
+        patient.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        patient.setText("Patient");
+        patient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,6 +101,12 @@ public class LoginFrame extends javax.swing.JFrame {
                             .addComponent(usernameTxt)
                             .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(360, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(patient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(608, 608, 608))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +125,11 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(admin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(patient, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,6 +142,20 @@ public class LoginFrame extends javax.swing.JFrame {
         this.loginFrame.setVisible(false);
         
     }//GEN-LAST:event_backLoginActionPerformed
+
+    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
+        // TODO add your handling code here:
+        SysAdminDashboard.adminDashboard = new SysAdminDashboard();
+        SysAdminDashboard.adminDashboard.setVisible(true);
+        this.loginFrame.setVisible(false);
+    }//GEN-LAST:event_adminActionPerformed
+
+    private void patientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientActionPerformed
+        // TODO add your handling code here:
+        PatientDashboard.patientDashboard = new PatientDashboard();
+        PatientDashboard.patientDashboard.setVisible(true);
+        this.loginFrame.setVisible(false);
+    }//GEN-LAST:event_patientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,12 +194,14 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton admin;
     private javax.swing.JButton backLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loginBtn;
     private javax.swing.JLabel loginLabel;
     private javax.swing.JPasswordField passwordTxt;
+    private javax.swing.JButton patient;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables
 }
