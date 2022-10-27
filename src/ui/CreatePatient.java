@@ -87,7 +87,7 @@ public class CreatePatient extends javax.swing.JPanel {
         jLabel10.setText("Password:");
 
         loginLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
-        loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         loginLabel.setText("Create Patient");
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N

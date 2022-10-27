@@ -10,10 +10,19 @@ package model;
  */
 public class Encounter {
     
+    private Long appointmentID;
     private VitalSigns vital;
     private String date;
     private Patient patientName;
     private Doctor doctorName;
+
+    public Long getAppointmentID() {
+        return appointmentID;
+    }
+
+    public void setAppointmentID(Long appointmentID) {
+        this.appointmentID = appointmentID;
+    }
 
     public VitalSigns getVital() {
         return vital;

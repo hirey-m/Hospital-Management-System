@@ -62,12 +62,9 @@
                           <Component id="historyBtn" alignment="0" max="32767" attributes="0"/>
                           <Component id="logoutBtn" alignment="0" max="32767" attributes="0"/>
                           <Component id="createDoc" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="createPatient" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
                           <Component id="viewDoctor" alignment="0" max="32767" attributes="0"/>
                           <Component id="viewPatient" alignment="0" max="32767" attributes="0"/>
+                          <Component id="createPatient" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -76,13 +73,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                      <Component id="viewPatient" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="viewDoctor" min="-2" max="-2" attributes="0"/>
+                      <Component id="createDoc" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="createPatient" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="createDoc" min="-2" max="-2" attributes="0"/>
+                      <Component id="viewPatient" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="viewDoctor" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="historyBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
