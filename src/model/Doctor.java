@@ -15,7 +15,7 @@ public class Doctor extends Person{
     private Hospital nameHospital;
     private String specialization;
     
-    public Doctor(long ssn, String name, String dob, long phoneNo, String email, House address, String username, String password,String empId, String dateOfJoining, Hospital nameHospital){
+    public Doctor(long ssn, String name, String dob, long phoneNo, String email, String address, String username, String password,String empId, String dateOfJoining, Hospital nameHospital){
         super(ssn,name,dob,phoneNo,email,address,username,password);
         this.setRole(UserRole.DOCTOR);
         this.empId = empId;

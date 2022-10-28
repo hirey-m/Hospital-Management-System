@@ -35,10 +35,8 @@ public class SysAdminDashboard extends javax.swing.JFrame {
         historyBtn = new javax.swing.JButton();
         appBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
-        createDoc = new javax.swing.JButton();
-        createPatient = new javax.swing.JButton();
-        viewDoctor = new javax.swing.JButton();
-        viewPatient = new javax.swing.JButton();
+        doctorDir = new javax.swing.JButton();
+        patientDir = new javax.swing.JButton();
         rightPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,31 +62,17 @@ public class SysAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        createDoc.setText("Create Doctor");
-        createDoc.addActionListener(new java.awt.event.ActionListener() {
+        doctorDir.setText("Doctors Directory");
+        doctorDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createDocActionPerformed(evt);
+                doctorDirActionPerformed(evt);
             }
         });
 
-        createPatient.setText("Create Patient");
-        createPatient.addActionListener(new java.awt.event.ActionListener() {
+        patientDir.setText("Patient Directory");
+        patientDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createPatientActionPerformed(evt);
-            }
-        });
-
-        viewDoctor.setText("View Doctors");
-        viewDoctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewDoctorActionPerformed(evt);
-            }
-        });
-
-        viewPatient.setText("View Patients");
-        viewPatient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewPatientActionPerformed(evt);
+                patientDirActionPerformed(evt);
             }
         });
 
@@ -102,29 +86,23 @@ public class SysAdminDashboard extends javax.swing.JFrame {
                     .addComponent(appBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(historyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(createDoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(createPatient, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(doctorDir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(patientDir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         leftPaneLayout.setVerticalGroup(
             leftPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPaneLayout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(createDoc)
+                .addGap(211, 211, 211)
+                .addComponent(patientDir)
                 .addGap(18, 18, 18)
-                .addComponent(createPatient)
-                .addGap(18, 18, 18)
-                .addComponent(viewPatient)
-                .addGap(18, 18, 18)
-                .addComponent(viewDoctor)
+                .addComponent(doctorDir)
                 .addGap(18, 18, 18)
                 .addComponent(historyBtn)
                 .addGap(18, 18, 18)
                 .addComponent(appBtn)
-                .addGap(97, 97, 97)
+                .addGap(68, 68, 68)
                 .addComponent(logoutBtn)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(leftPane);
@@ -174,35 +152,23 @@ public class SysAdminDashboard extends javax.swing.JFrame {
         splitPane.setRightComponent(appointment);
     }//GEN-LAST:event_appBtnActionPerformed
 
-    private void createDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createDocActionPerformed
-        // TODO add your handling code here:
-        CreateDoc createDoctor = new CreateDoc();
-        splitPane.setRightComponent(createDoctor);
-    }//GEN-LAST:event_createDocActionPerformed
-
-    private void createPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPatientActionPerformed
-        // TODO add your handling code here:
-        CreatePatient patient = new CreatePatient();
-        splitPane.setRightComponent(patient);
-    }//GEN-LAST:event_createPatientActionPerformed
-
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         // TODO add your handling code here:
         LoginFrame.loginFrame.setVisible(true);
         adminDashboard.setVisible(false);
     }//GEN-LAST:event_logoutBtnActionPerformed
 
-    private void viewDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDoctorActionPerformed
+    private void doctorDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorDirActionPerformed
         // TODO add your handling code here:
         DoctorView dView = new DoctorView();
         splitPane.setRightComponent(dView);
-    }//GEN-LAST:event_viewDoctorActionPerformed
+    }//GEN-LAST:event_doctorDirActionPerformed
 
-    private void viewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientActionPerformed
+    private void patientDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientDirActionPerformed
         // TODO add your handling code here:
         PatientView view = new PatientView();
         splitPane.setRightComponent(view);
-    }//GEN-LAST:event_viewPatientActionPerformed
+    }//GEN-LAST:event_patientDirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,14 +209,12 @@ public class SysAdminDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton appBtn;
-    private javax.swing.JButton createDoc;
-    private javax.swing.JButton createPatient;
+    private javax.swing.JButton doctorDir;
     private javax.swing.JButton historyBtn;
     private javax.swing.JPanel leftPane;
     private javax.swing.JButton logoutBtn;
+    private javax.swing.JButton patientDir;
     private javax.swing.JPanel rightPane;
     private javax.swing.JSplitPane splitPane;
-    private javax.swing.JButton viewDoctor;
-    private javax.swing.JButton viewPatient;
     // End of variables declaration//GEN-END:variables
 }

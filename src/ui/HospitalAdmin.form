@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="splitPane" pref="988" max="32767" attributes="0"/>
+              <Component id="splitPane" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -34,7 +34,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="splitPane" pref="788" max="32767" attributes="0"/>
+              <Component id="splitPane" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -55,41 +55,30 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="appBtn" alignment="0" max="32767" attributes="0"/>
-                          <Component id="historyBtn" alignment="0" max="32767" attributes="0"/>
-                          <Component id="logoutBtn" alignment="0" max="32767" attributes="0"/>
-                          <Component id="createDoc" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="createPatient" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="viewDoctor" alignment="0" max="32767" attributes="0"/>
-                          <Component id="viewPatient" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="logoutBtn" alignment="1" max="32767" attributes="0"/>
+                  <Component id="appBtn" alignment="0" max="32767" attributes="0"/>
+                  <Component id="historyBtn" alignment="0" max="32767" attributes="0"/>
+                  <Component id="doctorDir" alignment="0" max="32767" attributes="0"/>
+                  <Component id="patientDir" alignment="0" max="32767" attributes="0"/>
+                  <Component id="historyBtn1" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                      <Component id="viewPatient" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
+                      <Component id="patientDir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="viewDoctor" min="-2" max="-2" attributes="0"/>
+                      <Component id="doctorDir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="createPatient" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="createDoc" min="-2" max="-2" attributes="0"/>
+                      <Component id="historyBtn1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="historyBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="appBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="logoutBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="333" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -119,36 +108,28 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logoutBtnActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="createDoc">
+            <Component class="javax.swing.JButton" name="doctorDir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Create Doctor"/>
+                <Property name="text" type="java.lang.String" value="Doctor Directory"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createDocActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doctorDirActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="createPatient">
+            <Component class="javax.swing.JButton" name="patientDir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Create Patient"/>
+                <Property name="text" type="java.lang.String" value="Patient Directory"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createPatientActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="patientDirActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="viewDoctor">
+            <Component class="javax.swing.JButton" name="historyBtn1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="View Doctors"/>
+                <Property name="text" type="java.lang.String" value="Hospital Directory"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewDoctorActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="viewPatient">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="View Patients"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewPatientActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historyBtn1ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -163,7 +144,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="839" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="833" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

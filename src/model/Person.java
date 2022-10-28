@@ -21,12 +21,12 @@ public class Person {
     private String dob;
     private long phoneNo;
     private String email;
-    private House address;
+    private String address;
     private String username;
     private String password;
     private UserRole role;
     
-    public Person(long ssn, String name, String dob, long phoneNo, String email, House address, String username, String password) {
+    public Person(long ssn, String name, String dob, long phoneNo, String email, String address, String username, String password) {
         this.ssn = ssn;
         this.name = name;
         this.dob = dob;
@@ -46,7 +46,6 @@ public class Person {
         this.ssn = ssn;
     }
 
-    
     public String getName() {
         return name;
     }
@@ -79,11 +78,11 @@ public class Person {
         this.email = email;
     }
 
-    public House getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(House address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 

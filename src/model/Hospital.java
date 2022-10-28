@@ -11,7 +11,7 @@ package model;
 public class Hospital {
  
     private String hospitalName;
-    private String estDate;
+    private String address;
     private long phoneNo;
     private String email;
 
@@ -23,12 +23,12 @@ public class Hospital {
         this.hospitalName = hospitalName;
     }
 
-    public String getEstDate() {
-        return estDate;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEstDate(String estDate) {
-        this.estDate = estDate;
+    public void setEstDate(String address) {
+        this.address = address;
     }
 
     public long getPhoneNo() {

@@ -11,7 +11,8 @@ package model;
 public class Patient extends Person{
     private int age;
     
-    public Patient(long ssn, String name, String dob, long phoneNo, String email, House address, String username, String password, int age) {
+    
+    public Patient(long ssn, String name, String dob, long phoneNo, String email, String address, String username, String password, int age) {
         super(ssn, name, dob, phoneNo, email, address, username, password);
         this.setRole(UserRole.PATIENT);
         this.age = age;

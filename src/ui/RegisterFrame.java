@@ -4,7 +4,12 @@
  */
 package ui;
 
+import java.awt.event.KeyEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import model.Patient;
 
 /**
  *
@@ -15,7 +20,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     /**
      * Creates new form RegisterFrame
      */
-    
+    String gender = "";
     public static JFrame registerFrame;
     
     public RegisterFrame() {
@@ -83,9 +88,21 @@ public class RegisterFrame extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Email:");
 
+        emailTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailTxtFocusLost(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Phone Number:");
+
+        phoneTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                phoneTxtKeyPressed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -100,16 +117,36 @@ public class RegisterFrame extends javax.swing.JFrame {
         jLabel9.setText("Gender:");
 
         femaleRB.setText("Female");
+        femaleRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleRBActionPerformed(evt);
+            }
+        });
 
         maleRB.setText("Male");
+        maleRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleRBActionPerformed(evt);
+            }
+        });
 
         otherRB.setText("Other");
+        otherRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                otherRBActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Password:");
 
         RegisterBtn.setText("Register");
+        RegisterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterBtnActionPerformed(evt);
+            }
+        });
 
         backLogin.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         backLogin.setText("< Go Back");
@@ -249,6 +286,83 @@ public class RegisterFrame extends javax.swing.JFrame {
         this.registerFrame.setVisible(false);
 
     }//GEN-LAST:event_backLoginActionPerformed
+
+    private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBtnActionPerformed
+        // TODO add your handling code here:
+        long ssn = Long.parseLong(ssnTxt.getText());
+        String name = nameTxt.getText();
+        String dob = dobTxt.getText();
+        long phone = Long.parseLong(phoneTxt.getText());
+        String email = emailTxt.getText();
+        String address = addressTxt.getText();
+        String username = userTxt.getText();
+        String password = String.valueOf(passwordTxt.getPassword());
+        int age = Integer.parseInt(ageTxt.getText());
+        
+        Patient newpat = new Patient(ssn,name,dob,phone,email,address,username,password,age);
+        
+        
+    }//GEN-LAST:event_RegisterBtnActionPerformed
+
+    private void maleRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleRBActionPerformed
+        // TODO add your handling code here:
+        if(maleRB.isSelected()){
+            femaleRB.setSelected(false);
+            gender = "Male";
+            otherRB .setSelected(false);
+        }
+    }//GEN-LAST:event_maleRBActionPerformed
+
+    private void femaleRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleRBActionPerformed
+        // TODO add your handling code here:
+        if(femaleRB.isSelected()){
+            maleRB.setSelected(false);
+            gender = "Female";
+            otherRB.setSelected(false);
+        }
+    }//GEN-LAST:event_femaleRBActionPerformed
+
+    private void otherRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherRBActionPerformed
+        // TODO add your handling code here:
+        if(otherRB.isSelected()){
+            maleRB.setSelected(false);
+            gender = "Other";
+            femaleRB.setSelected(false);
+        }
+    }//GEN-LAST:event_otherRBActionPerformed
+
+    private void emailTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTxtFocusLost
+        // TODO add your handling code here:
+        String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"+ "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(regexPattern);
+        Matcher matcher = pattern.matcher(emailTxt.getText());
+        
+        if(!matcher.matches()){
+            JOptionPane.showMessageDialog(null,"Enter a valid Email");
+            emailTxt.setText("");
+        }
+    }//GEN-LAST:event_emailTxtFocusLost
+
+    private void phoneTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneTxtKeyPressed
+        // TODO add your handling code here:
+        String phoneNumber = phoneTxt.getText();
+        int lengthOfPhoneNumber = phoneNumber.length();
+        char checkChar = evt.getKeyChar();
+        if (checkChar >= '0' && checkChar <= '9') {
+            if (lengthOfPhoneNumber < 10) {
+                phoneTxt.setEditable(true);
+            } else {
+                phoneTxt.setEditable(false);
+                JOptionPane.showMessageDialog(this, "Cannot add more than 10 Numbers!");
+            }
+        } else {
+            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
+                phoneTxt.setEditable(true);
+            } else {
+                phoneTxt.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_phoneTxtKeyPressed
 
     /**
      * @param args the command line arguments

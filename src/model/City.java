@@ -11,17 +11,17 @@ import java.util.ArrayList;
  * @author manavhirey
  */
 public class City {
-    private ArrayList<House> city;
-    
-    public City(){
-        this.city = new ArrayList<Community>();
+    private ArrayList<Community> city;
+
+    public City(ArrayList<Community> city) {
+        this.city = city;
     }
 
-    public ArrayList<House> getCity() {
+    public ArrayList<Community> getCity() {
         return city;
     }
 
-    public void setCity(ArrayList<House> city) {
+    public void setCity(ArrayList<Community> city) {
         this.city = city;
     }
     

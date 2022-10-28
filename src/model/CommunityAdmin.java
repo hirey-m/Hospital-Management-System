@@ -12,7 +12,7 @@ public class CommunityAdmin extends Person {
     private String adminId;
     private String dateOfJoining;
     
-    public CommunityAdmin(long ssn, String name, String dob, long phoneNo, String email, House address, String username, String password, String adminId, String dateOfJoining) {
+    public CommunityAdmin(long ssn, String name, String dob, long phoneNo, String email, String address, String username, String password, String adminId, String dateOfJoining) {
         super(ssn, name, dob, phoneNo, email, address, username, password);
         this.setRole(UserRole.COM_ADMIN);
         this.adminId = adminId;

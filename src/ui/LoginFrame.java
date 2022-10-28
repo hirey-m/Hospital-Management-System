@@ -53,6 +53,11 @@ public class LoginFrame extends javax.swing.JFrame {
 
         loginBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         loginBtn.setText("Login");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
 
         loginLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -194,6 +199,10 @@ public class LoginFrame extends javax.swing.JFrame {
         CommunityAdmin.communityAdmin.setVisible(true);
         this.loginFrame.setVisible(false);
     }//GEN-LAST:event_comAdminActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
      * @param args the command line arguments
