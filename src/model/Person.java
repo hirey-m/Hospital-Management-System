@@ -11,13 +11,19 @@ package model;
 public class Person {
     public enum UserRole{
         SYS_ADMIN,
+        HOS_ADMIN,
         DOCTOR,
         COM_ADMIN,
         PATIENT
     }
     
+    public Person(){
+        
+    }
+    
     private long ssn;
     private String name;
+    private String gender;
     private String dob;
     private long phoneNo;
     private String email;
@@ -25,18 +31,21 @@ public class Person {
     private String username;
     private String password;
     private UserRole role;
-    
-    public Person(long ssn, String name, String dob, long phoneNo, String email, String address, String username, String password) {
+
+    public Person(long ssn, String name, String gender, String dob, long phoneNo, String email, String address, String username, String password, UserRole role) {
         this.ssn = ssn;
         this.name = name;
+        this.gender = gender;
         this.dob = dob;
         this.phoneNo = phoneNo;
         this.email = email;
         this.address = address;
         this.username = username;
         this.password = password;
-        
+        this.role = role;
     }
+    
+   
 
     public long getSsn() {
         return ssn;
@@ -46,12 +55,22 @@ public class Person {
         this.ssn = ssn;
     }
 
+    
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getDob() {

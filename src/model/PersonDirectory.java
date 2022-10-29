@@ -12,18 +12,18 @@ import java.util.ArrayList;
  */
 public class PersonDirectory {
     
-    private ArrayList<Person> person;
-    
-    public PersonDirectory(){
-        this.person = new ArrayList<Person>();
+    private ArrayList<Person> personList;
+
+    public PersonDirectory() {
+        this.personList = new ArrayList<>();
     }
 
-    public ArrayList<Person> getPerson() {
-        return person;
+    public ArrayList<Person> getPersonList() {
+        return personList;
     }
 
-    public void setPerson(ArrayList<Person> person) {
-        this.person = person;
+    public void setPersonList(ArrayList<Person> personList) {
+        this.personList = personList;
     }
     
     

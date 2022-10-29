@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/CommunityAdmin.java</file>
             <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/Person.java</file>
-            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/PatientDirectory.java</file>
-            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/HospitalDirectory.java</file>
-            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/Encounter.java</file>
             <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/SystemAdmin.java</file>
-            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/Community.java</file>
-            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/DoctorDirectory.java</file>
-            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/Hospital.java</file>
-            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/Patient.java</file>
-            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/model/EncounterHistory.java</file>
+            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/ui/LoginFrame.java</file>
+            <file>file:/Users/manavhirey/Documents/Java/Assignment2/HospitalManagementSystem/src/ui/RegisterFrame.java</file>
         </group>
     </open-files>
 </project-private>

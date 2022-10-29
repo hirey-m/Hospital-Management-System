@@ -4,6 +4,8 @@
  */
 package ui;
 
+import model.Person;
+
 /**
  *
  * @author manavhirey
@@ -13,10 +15,44 @@ public class PersonInfo extends javax.swing.JPanel {
     /**
      * Creates new form PersonInfo
      */
-    public PersonInfo() {
+    
+    private Person loggedPerson;
+    
+    public PersonInfo(Person loggedPerson) {
         initComponents();
+        this.loggedPerson = loggedPerson;
+        String gender = loggedPerson.getGender();
+        populateInfo();
     }
-
+    
+    private void populateInfo(){
+        if(loggedPerson != null){
+            ssnTxt.setText(String.valueOf(loggedPerson.getSsn()));
+            nameTxt.setText(loggedPerson.getName());
+            System.out.println(loggedPerson.getGender());
+            if( loggedPerson.getGender().equals("MALE")){
+                maleRB.setSelected(true);
+                femaleRB.setSelected(false);
+                otherRB.setSelected(false);
+            }else if(loggedPerson.getGender().equals("FEMALE")){
+                maleRB.setSelected(false);
+                femaleRB.setSelected(true);
+                otherRB.setSelected(false);
+            }else if(loggedPerson.getGender().equals("OTHER")){
+                maleRB.setSelected(false);
+                femaleRB.setSelected(false);
+                otherRB.setSelected(true);
+            }else{
+                maleRB.setSelected(false);
+                femaleRB.setSelected(false);
+                otherRB.setSelected(false);
+            }
+            dobTxt.setText(loggedPerson.getDob());
+            emailTxt.setText(loggedPerson.getEmail());
+            phoneTxt.setText(String.valueOf(loggedPerson.getPhoneNo()));
+            
+    }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

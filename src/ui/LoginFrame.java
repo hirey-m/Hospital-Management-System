@@ -5,6 +5,10 @@
 package ui;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import model.Person;
+import model.Person.UserRole;
+import model.SystemAdmin;
 /**
  *
  * @author manavhirey
@@ -174,21 +178,21 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
         // TODO add your handling code here:
-        SysAdminDashboard.adminDashboard = new SysAdminDashboard();
+        SysAdminDashboard.adminDashboard = new SysAdminDashboard(null);
         SysAdminDashboard.adminDashboard.setVisible(true);
         this.loginFrame.setVisible(false);
     }//GEN-LAST:event_adminActionPerformed
 
     private void hAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hAdminActionPerformed
         // TODO add your handling code here:
-        HospitalAdmin.hospitalAdmin = new HospitalAdmin();
+        HospitalAdmin.hospitalAdmin = new HospitalAdmin(null);
         HospitalAdmin.hospitalAdmin.setVisible(true);
         this.loginFrame.setVisible(false);
     }//GEN-LAST:event_hAdminActionPerformed
 
     private void patientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientActionPerformed
         // TODO add your handling code here:
-        PatientDashboard.patientDashboard = new PatientDashboard();
+        PatientDashboard.patientDashboard = new PatientDashboard(null);
         PatientDashboard.patientDashboard.setVisible(true);
         this.loginFrame.setVisible(false);
     }//GEN-LAST:event_patientActionPerformed
@@ -202,6 +206,38 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
+        String user = usernameTxt.getText();
+        String pass = String.valueOf(passwordTxt.getPassword());
+        
+        try{
+            Person person = SystemAdmin.personDir.getPersonList().stream()
+                    .filter( x -> x.getUsername().equals(user) && x.getPassword().equals(pass))
+                    .findFirst().get();
+            if(person.getRole() == UserRole.PATIENT || person.getRole() == UserRole.DOCTOR){
+                PatientDashboard.patientDashboard = new PatientDashboard(person);
+                PatientDashboard.patientDashboard.setVisible(true);
+                this.loginFrame.setVisible(false);
+            }
+            if(person.getRole() == UserRole.SYS_ADMIN){
+                SysAdminDashboard.adminDashboard = new SysAdminDashboard(person);
+                SysAdminDashboard.adminDashboard.setVisible(true);
+                this.loginFrame.setVisible(false);
+            if(person.getRole() == UserRole.HOS_ADMIN){
+                HospitalAdmin.hospitalAdmin = new HospitalAdmin(person);
+                HospitalAdmin.hospitalAdmin.setVisible(true);
+                this.loginFrame.setVisible(false);
+            }
+            if(person.getRole() == UserRole.COM_ADMIN){
+                CommunityAdmin.communityAdmin = new CommunityAdmin();
+                CommunityAdmin.communityAdmin.setVisible(true);
+                this.loginFrame.setVisible(false);
+            }
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "User does not exist.");
+            usernameTxt.setText("");
+            passwordTxt.setText("");
+        }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     /**

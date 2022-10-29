@@ -14,8 +14,8 @@ public class DoctorDirectory {
     
     private ArrayList<Doctor> doctor;
 
-    public DoctorDirectory(ArrayList<Doctor> doctor) {
-        this.doctor = doctor;
+     public DoctorDirectory() {
+        this.doctor = new ArrayList<>();
     }
     
     public ArrayList<Doctor> getDoctor() {

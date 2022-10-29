@@ -12,8 +12,8 @@ public class CommunityAdmin extends Person {
     private String adminId;
     private String dateOfJoining;
     
-    public CommunityAdmin(long ssn, String name, String dob, long phoneNo, String email, String address, String username, String password, String adminId, String dateOfJoining) {
-        super(ssn, name, dob, phoneNo, email, address, username, password);
+    public CommunityAdmin(long ssn, String name, String gender, String dob, long phoneNo, String email, String address, String username, String password, String adminId, String dateOfJoining, UserRole role) {
+        super(ssn, name,gender, dob, phoneNo, email, address, username, password,role);
         this.setRole(UserRole.COM_ADMIN);
         this.adminId = adminId;
         this.dateOfJoining = dateOfJoining;

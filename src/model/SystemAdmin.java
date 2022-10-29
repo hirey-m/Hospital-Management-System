@@ -5,6 +5,7 @@
 package model;
 
 import java.util.ArrayList;
+import model.Person;
 
 /**
  *
@@ -13,16 +14,37 @@ import java.util.ArrayList;
 public class SystemAdmin extends Person {
     
     private String adminId;
-    
-    public SystemAdmin(long ssn, String name, String dob, long phoneNo, String email, String address, String username, String password, String adminId) {
-        super(ssn, name, dob, phoneNo, email, address, username, password);
-        this.setRole(UserRole.SYS_ADMIN);
+
+    public SystemAdmin(String adminId, long ssn, String name, String gender, String dob, long phoneNo, String email, String address, String username, String password, UserRole role) {
+        super(ssn, name, gender, dob, phoneNo, email, address, username, password, UserRole.SYS_ADMIN);
         this.adminId = adminId;
     }
 
-    public static PatientDirectory patDir = new PatientDirectory(new ArrayList<Patient>());
-    public static DoctorDirectory docDir = new DoctorDirectory(new ArrayList<Doctor>());
-    public static CityDirectory cityDir = new CityDirectory(new ArrayList<City>());
+    
+  
+    
+    public static PersonDirectory personDir = new PersonDirectory();
+    public static PatientDirectory patDir = new PatientDirectory();
+    public static DoctorDirectory docDir = new DoctorDirectory();
+    public static CityDirectory cityDir = new CityDirectory();
+    public static EncounterHistory encHistRef = new EncounterHistory();
+    
+   
+    public String getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
+
+    public static PersonDirectory getPersonDir() {
+        return personDir;
+    }
+
+    public static void setPersonDir(PersonDirectory personDir) {
+        SystemAdmin.personDir = personDir;
+    }
 
     public static PatientDirectory getPatDir() {
         return patDir;
@@ -47,15 +69,4 @@ public class SystemAdmin extends Person {
     public static void setCityDir(CityDirectory cityDir) {
         SystemAdmin.cityDir = cityDir;
     }
-   
-    public String getAdminId() {
-        return adminId;
-    }
-
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
-    }
-    
-    
-    
 }

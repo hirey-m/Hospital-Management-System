@@ -5,6 +5,7 @@
 package ui;
 
 import javax.swing.JFrame;
+import model.Person;
 
 /**
  *
@@ -16,9 +17,11 @@ public class HospitalAdmin extends javax.swing.JFrame {
      * Creates new form HospitalAdmin
      */
     public static JFrame hospitalAdmin;
+    private Person loggedPerson;
     
-    public HospitalAdmin() {
+    public HospitalAdmin(Person loggedInPerson) {
         initComponents();
+        this.loggedPerson = loggedInPerson;
     }
 
     /**
@@ -150,7 +153,7 @@ public class HospitalAdmin extends javax.swing.JFrame {
 
     private void historyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBtnActionPerformed
         // TODO add your handling code here:
-        EncounterHistory eHistory = new EncounterHistory();
+        EncounterHistory eHistory = new EncounterHistory(loggedPerson);
         splitPane.setRightComponent(eHistory);
     }//GEN-LAST:event_historyBtnActionPerformed
 
@@ -214,8 +217,8 @@ public class HospitalAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                hospitalAdmin = new HospitalAdmin();
-                new HospitalAdmin().setVisible(true);
+                hospitalAdmin = new HospitalAdmin(null);
+                hospitalAdmin.setVisible(true);
             }
         });
     }

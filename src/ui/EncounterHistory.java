@@ -4,19 +4,34 @@
  */
 package ui;
 
+import model.Person;
+
 /**
  *
  * @author manavhirey
  */
 public class EncounterHistory extends javax.swing.JPanel {
-
     /**
      * Creates new form EncounterHistory
      */
-    public EncounterHistory() {
+    private Person loggedPerson;
+    public EncounterHistory(Person loggedInPerson) {
         initComponents();
+        this.loggedPerson = loggedInPerson;
+        if(loggedPerson.getRole() == Person.UserRole.PATIENT){
+            bodyTempTxt.setEditable(false);
+            bpTxt.setEditable(false);
+            pulseTxt.setEditable(false);
+            diagTxt.setEditable(false);
+            noteTxt.setEditable(false);
+            deleteBtn.setEnabled(false);
+            updateBtn.setEnabled(false);
+        }else if(loggedPerson.getRole() != Person.UserRole.SYS_ADMIN){
+            deleteBtn.setEnabled(false);
+        }
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +55,7 @@ public class EncounterHistory extends javax.swing.JPanel {
         noteTxt = new javax.swing.JTextField();
         diagTxt = new javax.swing.JTextField();
         viewBtn = new javax.swing.JButton();
-        submitbtn = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         patientSearch = new javax.swing.JTextField();
@@ -60,9 +75,16 @@ public class EncounterHistory extends javax.swing.JPanel {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         encounterTbl.getTableHeader().setReorderingAllowed(false);
@@ -94,7 +116,7 @@ public class EncounterHistory extends javax.swing.JPanel {
 
         viewBtn.setText("View");
 
-        submitbtn.setText("Submit");
+        updateBtn.setText("Update");
 
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -149,7 +171,7 @@ public class EncounterHistory extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(54, 54, 54)
-                                .addComponent(submitbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(43, 43, 43))
         );
@@ -189,7 +211,7 @@ public class EncounterHistory extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(submitbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -217,7 +239,7 @@ public class EncounterHistory extends javax.swing.JPanel {
     private javax.swing.JTextField patientSearch;
     private javax.swing.JTextField pulseTxt;
     private javax.swing.JButton searchBtn;
-    private javax.swing.JButton submitbtn;
+    private javax.swing.JButton updateBtn;
     private javax.swing.JButton viewBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,8 +14,8 @@ public class CityDirectory {
     
     private ArrayList<City> cityDir;
 
-    public CityDirectory(ArrayList<City> cityDir) {
-        this.cityDir = cityDir;
+   public CityDirectory() {
+        this.cityDir = new ArrayList<>();
     }
 
     public ArrayList<City> getCityDir() {

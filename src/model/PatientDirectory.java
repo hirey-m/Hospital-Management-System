@@ -12,18 +12,19 @@ import java.util.ArrayList;
  */
 public class PatientDirectory {
     
-    private ArrayList<Patient> patient;
+    private ArrayList<Patient> patientList;
+  
 
-    public PatientDirectory(ArrayList<Patient> patient) {
-        this.patient = patient;
+    public PatientDirectory() {
+        this.patientList = new ArrayList<>();
     }
 
-    public ArrayList<Patient> getPatient() {
-        return patient;
+    public ArrayList<Patient> getPatientList() {
+        return patientList;
     }
 
-    public void setPatient(ArrayList<Patient> patient) {
-        this.patient = patient;
+    public void setPatientList(ArrayList<Patient> patientList) {
+        this.patientList = patientList;
     }
     
 }

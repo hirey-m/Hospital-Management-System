@@ -12,18 +12,18 @@ import java.util.ArrayList;
  */
 public class EncounterHistory {
     
-    private ArrayList<Encounter> past;
+    private ArrayList<Encounter> pastList;
     
     public EncounterHistory(){
-        this.past = new ArrayList<Encounter>();
+        this.pastList = new ArrayList<>();
     }
 
-    public ArrayList<Encounter> getPast() {
-        return past;
+    public ArrayList<Encounter> getPastList() {
+        return pastList;
     }
 
-    public void setPast(ArrayList<Encounter> past) {
-        this.past = past;
+    public void setPastList(ArrayList<Encounter> pastList) {
+        this.pastList = pastList;
     }
     
 }

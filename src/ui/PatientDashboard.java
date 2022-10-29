@@ -5,6 +5,7 @@
 package ui;
 
 import javax.swing.JFrame;
+import model.Person;
 
 /**
  *
@@ -16,9 +17,11 @@ public class PatientDashboard extends javax.swing.JFrame {
      * Creates new form PatientDashboard
      */
     public static JFrame patientDashboard;
+    private Person loggedPerson;
     
-    public PatientDashboard() {
+    public PatientDashboard(Person loggedInPerson) {
         initComponents();
+        this.loggedPerson = loggedInPerson;
     }
 
     /**
@@ -138,7 +141,7 @@ public class PatientDashboard extends javax.swing.JFrame {
 
     private void personInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personInfoActionPerformed
         // TODO add your handling code here:
-        PersonInfo info = new PersonInfo();
+        PersonInfo info = new PersonInfo(loggedPerson);
         splitPane.setRightComponent(info);
     }//GEN-LAST:event_personInfoActionPerformed
 
@@ -150,7 +153,7 @@ public class PatientDashboard extends javax.swing.JFrame {
 
     private void historyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBtnActionPerformed
         // TODO add your handling code here:
-        EncounterHistory eHistory = new EncounterHistory();
+        EncounterHistory eHistory = new EncounterHistory(loggedPerson);
         splitPane.setRightComponent(eHistory);
     }//GEN-LAST:event_historyBtnActionPerformed
 
@@ -158,6 +161,7 @@ public class PatientDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         LoginFrame.loginFrame.setVisible(true);
         patientDashboard.setVisible(false);
+        loggedPerson = null;
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
@@ -190,7 +194,7 @@ public class PatientDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                patientDashboard = new PatientDashboard();
+                patientDashboard = new PatientDashboard(null);
                 patientDashboard.setVisible(true);
             }
         });
