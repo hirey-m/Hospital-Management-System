@@ -10,7 +10,7 @@ package model;
  */
 public class Patient extends Person{
 
-    public Patient(long ssn, String name, String gender, String dob, long phoneNo, String email, String address, String username, String password, UserRole role) {
+    public Patient(long ssn, String name, String gender, String dob, long phoneNo, String email, House address, String username, String password, UserRole role) {
         super(ssn, name, gender, dob, phoneNo, email, address, username, password, UserRole.PATIENT);
     }
 }

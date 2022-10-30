@@ -27,4 +27,8 @@ public class PatientDirectory {
         this.patientList = patientList;
     }
     
+    public void deletePatient(Patient p){
+        patientList.remove(p);
+    }
+    
 }

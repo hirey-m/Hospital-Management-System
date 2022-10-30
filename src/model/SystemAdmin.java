@@ -15,21 +15,20 @@ public class SystemAdmin extends Person {
     
     private String adminId;
 
-    public SystemAdmin(String adminId, long ssn, String name, String gender, String dob, long phoneNo, String email, String address, String username, String password, UserRole role) {
+    public SystemAdmin(String adminId, long ssn, String name, String gender, String dob, long phoneNo, String email, House address, String username, String password, UserRole role) {
         super(ssn, name, gender, dob, phoneNo, email, address, username, password, UserRole.SYS_ADMIN);
         this.adminId = adminId;
     }
-
-    
-  
-    
     public static PersonDirectory personDir = new PersonDirectory();
     public static PatientDirectory patDir = new PatientDirectory();
     public static DoctorDirectory docDir = new DoctorDirectory();
     public static CityDirectory cityDir = new CityDirectory();
     public static EncounterHistory encHistRef = new EncounterHistory();
     
-   
+    static{
+        personDir.getPersonList().add(new SystemAdmin("193290210", 193289821L, "Admin", "MALE", "12/01/2001", 178389210L, "admin@gmail.com", new House("Park Drive",21,02215L), "admin", "admin",UserRole.SYS_ADMIN));
+    }
+
     public String getAdminId() {
         return adminId;
     }
@@ -69,4 +68,14 @@ public class SystemAdmin extends Person {
     public static void setCityDir(CityDirectory cityDir) {
         SystemAdmin.cityDir = cityDir;
     }
+
+    public static EncounterHistory getEncHistRef() {
+        return encHistRef;
+    }
+
+    public static void setEncHistRef(EncounterHistory encHistRef) {
+        SystemAdmin.encHistRef = encHistRef;
+    }
+   
+    
 }

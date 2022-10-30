@@ -27,12 +27,12 @@ public class Person {
     private String dob;
     private long phoneNo;
     private String email;
-    private String address;
+    private House address;
     private String username;
     private String password;
     private UserRole role;
 
-    public Person(long ssn, String name, String gender, String dob, long phoneNo, String email, String address, String username, String password, UserRole role) {
+    public Person(long ssn, String name, String gender, String dob, long phoneNo, String email, House address, String username, String password, UserRole role) {
         this.ssn = ssn;
         this.name = name;
         this.gender = gender;
@@ -97,11 +97,11 @@ public class Person {
         this.email = email;
     }
 
-    public String getAddress() {
+    public House getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(House address) {
         this.address = address;
     }
 

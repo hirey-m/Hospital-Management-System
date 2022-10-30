@@ -10,24 +10,40 @@ package model;
  */
 public class House {
     
-    private String street;
-    private int zip;
+    private String streetAddress;
+    private int houseNo;
+    private long zip;
 
-    public String getStreet() {
-        return street;
+    public House(String streetAddress, int houseNo, long zip) {
+        this.streetAddress = streetAddress;
+        this.houseNo = houseNo;
+        this.zip = zip;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public String getStreetAddress() {
+        return streetAddress;
     }
 
-    public int getZip() {
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public int getHouseNo() {
+        return houseNo;
+    }
+
+    public void setHouseNo(int houseNo) {
+        this.houseNo = houseNo;
+    }
+
+    public long getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(long zip) {
         this.zip = zip;
     }
+    
     
     
 }
