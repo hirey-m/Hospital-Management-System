@@ -70,6 +70,11 @@ public class BookAppointment extends javax.swing.JPanel {
         loginLabel1.setText("Appointment Scheduling");
 
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Search Hospital:");
 
@@ -237,6 +242,17 @@ public class BookAppointment extends javax.swing.JPanel {
 
     }//GEN-LAST:event_bookBtnActionPerformed
 
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+        if(searchField == null){
+            JOptionPane.showMessageDialog(this, "Enter Keywords to search.");
+        }else{
+            String search = searchField.getText();
+            populateBySearch(search);
+        }
+        
+    }//GEN-LAST:event_searchBtnActionPerformed
+
     private void populateTable(){
          DefaultTableModel model = (DefaultTableModel) appTbl.getModel();
         model.setRowCount(0);
@@ -255,6 +271,25 @@ public class BookAppointment extends javax.swing.JPanel {
         }
     }
 
+    private void populateBySearch(String search){
+        DefaultTableModel model = (DefaultTableModel) appTbl.getModel();
+        model.setRowCount(0);
+        
+        for(Doctor doc: SystemAdmin.docDir.getDoctorList()){
+            if(search.equals(doc.getNameHospital())){
+                Object[] row = new Object[5];
+                row[0] = doc.getName();
+                //row[0] = ne.getEmployeeId();
+                row[1] = doc.getSpecialization();
+                row[2] = doc.getNameHospital();
+                row[3] = doc.getEmail();
+                row[4] = doc.getGender();
+
+            model.addRow(row);
+            }
+            
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SelectBtn;
     private javax.swing.JTable appTbl;
