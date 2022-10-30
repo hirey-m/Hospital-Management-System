@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Doctor;
@@ -21,6 +22,7 @@ public class DoctorView extends javax.swing.JPanel {
      * Creates new form DoctorView
      */
     DoctorDirectory docDir = SystemAdmin.docDir;
+    String empId = "";
     String gender = "";
     public DoctorView() {
         initComponents();
@@ -82,15 +84,22 @@ public class DoctorView extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "SSN", "Name", "Hospital Name", "Specialization", "Gender"
+                "EmpId", "Name", "Hospital Name", "Specialization", "Gender"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         docTbl.getTableHeader().setReorderingAllowed(false);
@@ -442,6 +451,8 @@ public class DoctorView extends javax.swing.JPanel {
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
         // TODO add your handling code here:
+        Random rand = new Random();
+        empId = String.valueOf(rand.nextInt(100000));
         long ssn = Long.parseLong(ssnTxt.getText());
         String name = nameTxt.getText();
         String dob = dobTxt.getText();
@@ -456,7 +467,7 @@ public class DoctorView extends javax.swing.JPanel {
         String special = specialTxt.getText();
         String hosName = hosTxt.getText();
         
-        Doctor newdoc = new Doctor(ssn,name,gender,dob,phone,email,house,username,password,hosName, SystemAdmin.UserRole.DOCTOR ,special);
+        Doctor newdoc = new Doctor(empId,hosName,special,ssn,name,gender,dob,phone,email,house,username,password, SystemAdmin.UserRole.DOCTOR);
         SystemAdmin.docDir.getDoctorList().add(newdoc);
         SystemAdmin.personDir.getPersonList().add(newdoc);
         
@@ -489,19 +500,19 @@ public class DoctorView extends javax.swing.JPanel {
         }
         
         DefaultTableModel model = (DefaultTableModel) docTbl.getModel();
-        Doctor selectedPat = SystemAdmin.docDir.getDoctorList().get(selected);
+        Doctor selectedDoc = SystemAdmin.docDir.getDoctorList().get(selected);
         
-        ssnTxt.setText(String.valueOf(selectedPat.getSsn()));
-        nameTxt.setText(selectedPat.getName());
-        if(selectedPat.getGender().equals( "MALE")){
+        ssnTxt.setText(String.valueOf(selectedDoc.getSsn()));
+        nameTxt.setText(selectedDoc.getName());
+        if(selectedDoc.getGender().equals( "MALE")){
             maleRB.setSelected(true);
             femaleRB.setSelected(false);
             otherRB.setSelected(false);
-        }else if(selectedPat.getGender().equals("FEMALE")){
+        }else if(selectedDoc.getGender().equals("FEMALE")){
             maleRB.setSelected(false);
             femaleRB.setSelected(true);
             otherRB.setSelected(false);
-        }else if(selectedPat.getGender().equals("OTHER")){
+        }else if(selectedDoc.getGender().equals("OTHER")){
             maleRB.setSelected(false);
             femaleRB.setSelected(false);
             otherRB.setSelected(true);
@@ -511,14 +522,16 @@ public class DoctorView extends javax.swing.JPanel {
             otherRB.setSelected(false);
         }
         
-        dobTxt.setText(selectedPat.getDob());
-        emailTxt.setText(selectedPat.getEmail());
-        phoneTxt.setText(String.valueOf(selectedPat.getPhoneNo()));
-        houseTxt.setText(String.valueOf(selectedPat.getAddress().getHouseNo()));
-        streetTxt.setText(selectedPat.getAddress().getStreetAddress());
-        zipTxt.setText(String.valueOf(selectedPat.getAddress().getZip()));
-        userTxt.setText(selectedPat.getUsername());
-        passwordTxt.setText(selectedPat.getPassword());
+        dobTxt.setText(selectedDoc.getDob());
+        emailTxt.setText(selectedDoc.getEmail());
+        phoneTxt.setText(String.valueOf(selectedDoc.getPhoneNo()));
+        houseTxt.setText(String.valueOf(selectedDoc.getAddress().getHouseNo()));
+        streetTxt.setText(selectedDoc.getAddress().getStreetAddress());
+        zipTxt.setText(String.valueOf(selectedDoc.getAddress().getZip()));
+        userTxt.setText(selectedDoc.getUsername());
+        passwordTxt.setText(selectedDoc.getPassword());
+        specialTxt.setText(selectedDoc.getSpecialization());
+        hosTxt.setText(selectedDoc.getNameHospital());
         
         createBtn.setEnabled(false);
     }//GEN-LAST:event_viewBtnActionPerformed
@@ -613,6 +626,8 @@ public class DoctorView extends javax.swing.JPanel {
         zipTxt.setText("");
         userTxt.setText("");
         passwordTxt.setText("");
+        hosTxt.setText("");
+        specialTxt.setText("");
         
         femaleRB.setSelected(false);
         maleRB.setSelected(false);
@@ -628,7 +643,7 @@ public class DoctorView extends javax.swing.JPanel {
         for(Doctor p: docDir.getDoctorList()){
             
             Object[] row = new Object[5];
-            row[0] = p.getSsn();
+            row[0] = p.getEmpId();
             //row[0] = ne.getEmployeeId();
             row[1] = p.getName();
             row[2] = p.getNameHospital();

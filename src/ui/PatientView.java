@@ -362,7 +362,7 @@ public class PatientView extends javax.swing.JPanel {
         Patient patient = SystemAdmin.patDir.getPatientList().get(selected);
         
         SystemAdmin.patDir.getPatientList().remove(patient);
-        SystemAdmin.patDir.getPatientList().remove(patient);
+        SystemAdmin.personDir.getPersonList().remove(patient);
         
         populateTable();
         

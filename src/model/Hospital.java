@@ -10,11 +10,28 @@ package model;
  */
 public class Hospital {
  
+    private long hospitalId;
     private String hospitalName;
     private String address;
     private long phoneNo;
     private String email;
 
+    public Hospital(long hospitalId, String hospitalName, String address, long phoneNo, String email) {
+        this.hospitalId = hospitalId;
+        this.hospitalName = hospitalName;
+        this.address = address;
+        this.phoneNo = phoneNo;
+        this.email = email;
+    }
+
+    public long getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(long hospitalId) {
+        this.hospitalId = hospitalId;
+    }
+    
     public String getHospitalName() {
         return hospitalName;
     }
@@ -27,7 +44,7 @@ public class Hospital {
         return address;
     }
 
-    public void setEstDate(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 

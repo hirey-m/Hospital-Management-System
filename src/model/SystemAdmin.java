@@ -6,6 +6,7 @@ package model;
 
 import java.util.ArrayList;
 import model.Person;
+import model.Person.UserRole;
 
 /**
  *
@@ -19,6 +20,8 @@ public class SystemAdmin extends Person {
         super(ssn, name, gender, dob, phoneNo, email, address, username, password, UserRole.SYS_ADMIN);
         this.adminId = adminId;
     }
+    
+    public static HospitalDirectory hosDir = new HospitalDirectory();
     public static PersonDirectory personDir = new PersonDirectory();
     public static PatientDirectory patDir = new PatientDirectory();
     public static DoctorDirectory docDir = new DoctorDirectory();
@@ -27,6 +30,12 @@ public class SystemAdmin extends Person {
     
     static{
         personDir.getPersonList().add(new SystemAdmin("193290210", 193289821L, "Admin", "MALE", "12/01/2001", 178389210L, "admin@gmail.com", new House("Park Drive",21,02215L), "admin", "admin",UserRole.SYS_ADMIN));
+        Patient p1 = new Patient(732838L, "manavhirey", "MALE", "12/01/2001", 178389210L, "manav@gmail.com", new House("Park Drive",21,02215L), "manav", "manav",UserRole.PATIENT);
+        Doctor d1 = new Doctor("832782389", "Lilavati", "orthodontist", 873893932L, "People", "OTHER", "29/03/2001", 98278348993L, "doctor@lilavati", new House("Park Drive",21,02215L), "doctorsRox", "doctor", SystemAdmin.UserRole.DOCTOR);
+        patDir.getPatientList().add(p1);
+        personDir.getPersonList().add(p1);
+        docDir.getDoctorList().add(d1);
+        personDir.getPersonList().add(d1);
     }
 
     public String getAdminId() {
@@ -35,6 +44,14 @@ public class SystemAdmin extends Person {
 
     public void setAdminId(String adminId) {
         this.adminId = adminId;
+    }
+
+    public static HospitalDirectory getHosDir() {
+        return hosDir;
+    }
+
+    public static void setHosDir(HospitalDirectory hosDir) {
+        SystemAdmin.hosDir = hosDir;
     }
 
     public static PersonDirectory getPersonDir() {

@@ -55,8 +55,6 @@ public class Person {
         this.ssn = ssn;
     }
 
-    
-
     public String getName() {
         return name;
     }

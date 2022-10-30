@@ -11,19 +11,24 @@ package model;
 public class Doctor extends Person{
     
     private String empId;
-    private String dateOfJoining;
     private String nameHospital;
     //private Hospital nameHospital;
     private String specialization;
-    
-    public Doctor(long ssn, String name, String gender, String dob, long phoneNo, String email, House address, String username, String password, String nameHospital, UserRole role, String specialization){
-        super(ssn,name,gender,dob,phoneNo,email,address,username,password,role);
-        this.setRole(UserRole.DOCTOR);
+
+    public Doctor(String empId, String nameHospital, String specialization) {
+        this.empId = empId;
         this.nameHospital = nameHospital;
-//        this.nameHospital = nameHospital;
         this.specialization = specialization;
-        
     }
+
+    public Doctor(String empId, String nameHospital, String specialization, long ssn, String name, String gender, String dob, long phoneNo, String email, House address, String username, String password, UserRole role) {
+        super(ssn, name, gender, dob, phoneNo, email, address, username, password, role);
+        this.empId = empId;
+        this.nameHospital = nameHospital;
+        this.specialization = specialization;
+    }
+    
+    
 
     public String getEmpId() {
         return empId;
@@ -31,14 +36,6 @@ public class Doctor extends Person{
 
     public void setEmpId(String empId) {
         this.empId = empId;
-    }
-
-    public String getDateOfJoining() {
-        return dateOfJoining;
-    }
-
-    public void setDateOfJoining(String dateOfJoining) {
-        this.dateOfJoining = dateOfJoining;
     }
 
 //    public Hospital getNameHospital() {
