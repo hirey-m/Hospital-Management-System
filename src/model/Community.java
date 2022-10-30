@@ -12,18 +12,38 @@ import java.util.ArrayList;
  */
 public class Community {
     
-    private ArrayList<House> county;
-    
-    public Community(){
-        this.county = new ArrayList<House>();
+    private long communityId;
+    private String commName;
+    private long zip;
+
+    public Community(long communityId, String commName, long zip) {
+        this.communityId = communityId;
+        this.commName = commName;
+        this.zip = zip;
     }
 
-    public ArrayList<House> getCounty() {
-        return county;
+    public long getCommunityId() {
+        return communityId;
     }
 
-    public void setCounty(ArrayList<House> county) {
-        this.county = county;
+    public void setCommunityId(long communityId) {
+        this.communityId = communityId;
+    }
+
+    public String getCommName() {
+        return commName;
+    }
+
+    public void setCommName(String commName) {
+        this.commName = commName;
+    }
+
+    public long getZip() {
+        return zip;
+    }
+
+    public void setZip(long zip) {
+        this.zip = zip;
     }
     
     

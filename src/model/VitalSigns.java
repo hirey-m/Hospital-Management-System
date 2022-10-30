@@ -16,6 +16,14 @@ public class VitalSigns {
      private String diagnosis;
      private String note;
 
+    public VitalSigns(double temp, double bp, double pulse, String diagnosis, String note) {
+        this.temp = temp;
+        this.bp = bp;
+        this.pulse = pulse;
+        this.diagnosis = diagnosis;
+        this.note = note;
+    }
+
     public double getTemp() {
         return temp;
     }

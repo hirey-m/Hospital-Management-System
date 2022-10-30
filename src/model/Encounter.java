@@ -10,17 +10,27 @@ package model;
  */
 public class Encounter {
     
-    private Long appointmentID;
+    private String appointmentID;
     private VitalSigns vital;
     private String date;
-    private Patient patientName;
+    private String time;
+    private Person personName;
     private Doctor doctorName;
 
-    public Long getAppointmentID() {
+    public Encounter(String appointmentID, VitalSigns vital, String date, String time,Person personName, Doctor doctorName) {
+        this.appointmentID = appointmentID;
+        this.vital = vital;
+        this.date = date;
+        this.time = time;
+        this.personName = personName;
+        this.doctorName = doctorName;
+    }
+
+    public String getAppointmentID() {
         return appointmentID;
     }
 
-    public void setAppointmentID(Long appointmentID) {
+    public void setAppointmentID(String appointmentID) {
         this.appointmentID = appointmentID;
     }
 
@@ -40,12 +50,22 @@ public class Encounter {
         this.date = date;
     }
 
-    public Patient getPatientName() {
-        return patientName;
+    public String getTime() {
+        return time;
     }
 
-    public void setPatientName(Patient patientName) {
-        this.patientName = patientName;
+    public void setTime(String time) {
+        this.time = time;
+    }
+    
+    
+
+    public Person getPersonName() {
+        return personName;
+    }
+
+    public void setPersonName(Person personName) {
+        this.personName = personName;
     }
 
     public Doctor getDoctorName() {

@@ -4,6 +4,15 @@
  */
 package ui;
 
+import java.util.Random;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Doctor;
+import model.Encounter;
+import model.Person;
+import model.SystemAdmin;
+import model.VitalSigns;
+
 /**
  *
  * @author manavhirey
@@ -13,10 +22,23 @@ public class BookAppointment extends javax.swing.JPanel {
     /**
      * Creates new form BookAppointment
      */
-    public BookAppointment() {
+    private Doctor docPicked;
+    private Person loggedPerson;
+    public BookAppointment(Person loggedInPerson) {
         initComponents();
+        populateTable();
+        this.loggedPerson = loggedInPerson;
+        patNameTxt.setText(loggedPerson.getName());
+        if (loggedInPerson.getRole() == SystemAdmin.UserRole.PATIENT){
+            patNameTxt.setEditable(false);
+            docNameTxt.setEditable(false);
+        }
+        if (loggedInPerson.getRole() == SystemAdmin.UserRole.DOCTOR){
+            docNameTxt.setEditable(false);
+        }
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,17 +53,17 @@ public class BookAppointment extends javax.swing.JPanel {
         searchBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        appTbl = new javax.swing.JTable();
         timeTxt = new javax.swing.JTextField();
         dateTxt = new javax.swing.JTextField();
         loginLabel2 = new javax.swing.JLabel();
         loginLabel3 = new javax.swing.JLabel();
         bookBtn = new javax.swing.JButton();
-        timeTxt1 = new javax.swing.JTextField();
+        patNameTxt = new javax.swing.JTextField();
         loginLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        SelectBtn = new javax.swing.JButton();
         loginLabel5 = new javax.swing.JLabel();
-        timeTxt2 = new javax.swing.JTextField();
+        docNameTxt = new javax.swing.JTextField();
 
         loginLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         loginLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -51,7 +73,7 @@ public class BookAppointment extends javax.swing.JPanel {
 
         jLabel1.setText("Search Hospital:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        appTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -59,11 +81,19 @@ public class BookAppointment extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Name", "Specialization", "Hospital Name", "Email", "Phone No."
+                "Name", "Specialization", "Hospital Name", "Email", "Gender"
             }
-        ));
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        appTbl.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(appTbl);
 
         loginLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         loginLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -74,12 +104,22 @@ public class BookAppointment extends javax.swing.JPanel {
         loginLabel3.setText("Time:");
 
         bookBtn.setText("Book Appointment");
+        bookBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookBtnActionPerformed(evt);
+            }
+        });
 
         loginLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         loginLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel4.setText("Patient Name:");
 
-        jButton1.setText("Select");
+        SelectBtn.setText("Select");
+        SelectBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectBtnActionPerformed(evt);
+            }
+        });
 
         loginLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         loginLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -113,8 +153,8 @@ public class BookAppointment extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(dateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
                             .addComponent(timeTxt)
-                            .addComponent(timeTxt1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(timeTxt2))
+                            .addComponent(patNameTxt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(docNameTxt))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -123,7 +163,7 @@ public class BookAppointment extends javax.swing.JPanel {
                         .addComponent(bookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(274, 274, 274))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SelectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70))))
         );
         layout.setVerticalGroup(
@@ -139,15 +179,15 @@ public class BookAppointment extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SelectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginLabel4)
-                    .addComponent(timeTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(patNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginLabel5)
-                    .addComponent(timeTxt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(docNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginLabel2)
@@ -162,23 +202,75 @@ public class BookAppointment extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SelectBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectBtnActionPerformed
+        // TODO add your handling code here:
+        int selected = appTbl.getSelectedRow();
+        
+        if (selected < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row");
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) appTbl.getModel();
+        Doctor selectedDoc = SystemAdmin.docDir.getDoctorList().get(selected);
+        docPicked = selectedDoc;
+        
+        docNameTxt.setText(String.valueOf(selectedDoc.getName()));
+    }//GEN-LAST:event_SelectBtnActionPerformed
+
+    private void bookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookBtnActionPerformed
+        // TODO add your handling code here:
+        Random rand = new Random();
+        String appId = String.valueOf(rand.nextInt(100000));
+        String date = dateTxt.getText();
+        String time = timeTxt.getText();
+        
+        Encounter bookenc = new Encounter(appId, new VitalSigns(0,0,0,"",""), date, time, loggedPerson, docPicked);
+        SystemAdmin.encHistRef.getPastList().add(bookenc);
+        
+        docNameTxt.setText("");
+        patNameTxt.setText("");
+        dateTxt.setText("");
+        timeTxt.setText("");
+        
+        JOptionPane.showMessageDialog(this,"New Patient Added.");
+
+    }//GEN-LAST:event_bookBtnActionPerformed
+
+    private void populateTable(){
+         DefaultTableModel model = (DefaultTableModel) appTbl.getModel();
+        model.setRowCount(0);
+        
+        for(Doctor p: SystemAdmin.docDir.getDoctorList()){
+            
+            Object[] row = new Object[5];
+            row[0] = p.getName();
+            //row[0] = ne.getEmployeeId();
+            row[1] = p.getSpecialization();
+            row[2] = p.getNameHospital();
+            row[3] = p.getEmail();
+            row[4] = p.getGender();
+
+            model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SelectBtn;
+    private javax.swing.JTable appTbl;
     private javax.swing.JButton bookBtn;
     private javax.swing.JTextField dateTxt;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField docNameTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel loginLabel1;
     private javax.swing.JLabel loginLabel2;
     private javax.swing.JLabel loginLabel3;
     private javax.swing.JLabel loginLabel4;
     private javax.swing.JLabel loginLabel5;
+    private javax.swing.JTextField patNameTxt;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchField;
     private javax.swing.JTextField timeTxt;
-    private javax.swing.JTextField timeTxt1;
-    private javax.swing.JTextField timeTxt2;
     // End of variables declaration//GEN-END:variables
 }

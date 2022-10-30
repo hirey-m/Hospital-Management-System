@@ -4,7 +4,11 @@
  */
 package ui;
 
+import javax.swing.table.DefaultTableModel;
+import model.Doctor;
+import model.Encounter;
 import model.Person;
+import model.SystemAdmin;
 
 /**
  *
@@ -29,6 +33,7 @@ public class EncounterHistory extends javax.swing.JPanel {
         }else if(loggedPerson.getRole() != Person.UserRole.SYS_ADMIN){
             deleteBtn.setEnabled(false);
         }
+        populateTable();
     }
     
     
@@ -220,6 +225,23 @@ public class EncounterHistory extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteBtnActionPerformed
 
+    private void populateTable(){
+         DefaultTableModel model = (DefaultTableModel) encounterTbl.getModel();
+        model.setRowCount(0);
+        
+        for(Encounter enc: SystemAdmin.encHistRef.getPastList()){
+            
+            Object[] row = new Object[5];
+            row[0] = enc.getAppointmentID();
+            //row[0] = ne.getEmployeeId();
+            row[1] = enc.getDate();
+            row[2] = enc.getTime();
+            row[3] = enc.getDoctorName().getName();
+            row[4] = enc.getDoctorName().getNameHospital();
+
+            model.addRow(row);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bodyTempTxt;

@@ -159,7 +159,7 @@ public class HospitalAdmin extends javax.swing.JFrame {
 
     private void appBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appBtnActionPerformed
         // TODO add your handling code here:
-        BookAppointment appointment = new BookAppointment();
+        BookAppointment appointment = new BookAppointment(loggedPerson);
         splitPane.setRightComponent(appointment);
     }//GEN-LAST:event_appBtnActionPerformed
 

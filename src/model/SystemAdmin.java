@@ -21,6 +21,7 @@ public class SystemAdmin extends Person {
         this.adminId = adminId;
     }
     
+    public static CommunityDirectory commDir = new CommunityDirectory();
     public static HospitalDirectory hosDir = new HospitalDirectory();
     public static PersonDirectory personDir = new PersonDirectory();
     public static PatientDirectory patDir = new PatientDirectory();
