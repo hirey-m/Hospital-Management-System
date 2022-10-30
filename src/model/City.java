@@ -11,17 +11,42 @@ import java.util.ArrayList;
  * @author manavhirey
  */
 public class City {
-    private ArrayList<Community> city;
+    private String name;
+    private long cityID;
+    private ArrayList<String> city;
 
-    public City(ArrayList<Community> city) {
+    public City(String name, long cityID, ArrayList<String> city) {
+        this.name = name;
+        this.cityID = cityID;
         this.city = city;
     }
 
-    public ArrayList<Community> getCity() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getCityID() {
+        return cityID;
+    }
+
+    public void setCityID(long cityID) {
+        this.cityID = cityID;
+    }
+
+    
+    public City(ArrayList<String> city) {
+        this.city = city;
+    }
+
+    public ArrayList<String> getCity() {
         return city;
     }
 
-    public void setCity(ArrayList<Community> city) {
+    public void setCity(ArrayList<String> city) {
         this.city = city;
     }
     

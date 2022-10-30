@@ -199,8 +199,8 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void comAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comAdminActionPerformed
         // TODO add your handling code here:
-        CommunityAdmin.communityAdmin = new CommunityAdmin();
-        CommunityAdmin.communityAdmin.setVisible(true);
+        CityManager.cityManager = new CityManager();
+        CityManager.cityManager.setVisible(true);
         this.loginFrame.setVisible(false);
     }//GEN-LAST:event_comAdminActionPerformed
 
@@ -228,8 +228,8 @@ public class LoginFrame extends javax.swing.JFrame {
                 this.loginFrame.setVisible(false);
             }
             if(person.getRole() == UserRole.COM_ADMIN){
-                CommunityAdmin.communityAdmin = new CommunityAdmin();
-                CommunityAdmin.communityAdmin.setVisible(true);
+                CityManager.cityManager = new CityManager();
+                CityManager.cityManager.setVisible(true);
                 this.loginFrame.setVisible(false);
             }
             }
