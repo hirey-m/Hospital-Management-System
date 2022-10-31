@@ -310,7 +310,7 @@ public class BookAppointment extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(Doctor doc: SystemAdmin.docDir.getDoctorList()){
-            if(search.equals(doc.getNameHospital().getHospitalName())){
+            if(doc.getNameHospital().getHospitalName().toLowerCase().contains(search.toLowerCase())){
                 Object[] row = new Object[5];
                 row[0] = doc.getName();
                 //row[0] = ne.getEmployeeId();

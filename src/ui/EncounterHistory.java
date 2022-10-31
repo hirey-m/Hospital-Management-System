@@ -277,6 +277,26 @@ public class EncounterHistory extends javax.swing.JPanel {
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
+        int selected = encounterTbl.getSelectedRow();
+        
+        if (selected < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete!");
+            return;
+        }
+        
+        Encounter enc = SystemAdmin.encHistRef.getPastList().get(selected);
+        
+        SystemAdmin.encHistRef.getPastList().remove(enc);
+        
+        populateTable();
+        
+        bodyTempTxt.setText("");
+        bpTxt.setText("");
+        pulseTxt.setText("");
+        diagTxt.setText("");
+        noteTxt.setText("");
+        
+        JOptionPane.showMessageDialog(this, "Encounter Deleted.");
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
@@ -364,7 +384,7 @@ public class EncounterHistory extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(Encounter enc: SystemAdmin.encHistRef.getPastList()){
-            if(search.equals(enc.getPersonName().getName())){
+            if(enc.getPersonName().getName().toLowerCase().contains(search.toLowerCase())){
                 Object[] row = new Object[5];
                 row[0] = enc.getAppointmentID();
                 //row[0] = ne.getEmployeeId();
