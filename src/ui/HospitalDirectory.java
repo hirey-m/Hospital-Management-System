@@ -6,6 +6,8 @@ package ui;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.City;
+import model.Community;
 import model.Hospital;
 import model.Person;
 import model.SystemAdmin;
@@ -25,6 +27,7 @@ public class HospitalDirectory extends javax.swing.JPanel {
         if(loggedInPerson.getRole().equals(SystemAdmin.UserRole.SYS_ADMIN)){
             deleteBtn.setVisible(true);
         }
+        populateComms();
         populateTable();
     }
 
@@ -54,6 +57,10 @@ public class HospitalDirectory extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         hosTbl = new javax.swing.JTable();
         loginLabel1 = new javax.swing.JLabel();
+        cmbCity = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        cmbComm = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
 
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -136,40 +143,29 @@ public class HospitalDirectory extends javax.swing.JPanel {
         loginLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         loginLabel1.setText("Hospital Directory");
 
+        cmbCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("City:");
+
+        cmbComm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbComm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCommActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Community:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(phoneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(hosTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(hosId, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -185,7 +181,44 @@ public class HospitalDirectory extends javax.swing.JPanel {
                         .addComponent(createBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(228, 228, 228))))
+                        .addGap(227, 227, 227))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(185, 185, 185)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(phoneTxt)
+                                .addComponent(emailTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(187, 187, 187)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cmbComm, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(hosTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(hosId, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cmbCity, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,10 +240,6 @@ public class HospitalDirectory extends javax.swing.JPanel {
                     .addComponent(hosTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -218,11 +247,23 @@ public class HospitalDirectory extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(53, 53, 53)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbComm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addGap(85, 85, 85))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -246,6 +287,9 @@ public class HospitalDirectory extends javax.swing.JPanel {
         addressTxt.setText("");
         phoneTxt.setText("");
         emailTxt.setText("");
+        cmbCity.setSelectedIndex(0);
+        cmbComm.setSelectedIndex(0);
+        
         
          JOptionPane.showMessageDialog(this,"Hospital Data Deleted.");
          
@@ -260,9 +304,16 @@ public class HospitalDirectory extends javax.swing.JPanel {
         String add = addressTxt.getText();
         String emailId = emailTxt.getText();
         long phone = Long.parseLong(phoneTxt.getText());
+        String cmbVal = String.valueOf(cmbCity.getSelectedItem());
+        String cmbValC = String.valueOf(cmbComm.getSelectedItem());
+        City cityId = SystemAdmin.cityDir.getCityDir().stream()
+                    .filter( x -> x.getName().equals(cmbVal))
+                    .findFirst().get();
+        Community commId = SystemAdmin.commDir.getDirectoryCom().stream()
+                    .filter( x -> x.getCommName().equals(cmbValC))
+                    .findFirst().get();
         
-        
-        Hospital newhos = new Hospital(hospitalId, hospitalName,add,phone,emailId);
+        Hospital newhos = new Hospital(hospitalId, hospitalName,add,phone,emailId,commId,cityId);
         SystemAdmin.hosDir.getHospitalList().add(newhos);
         
         hosId.setText("");
@@ -270,6 +321,9 @@ public class HospitalDirectory extends javax.swing.JPanel {
         addressTxt.setText("");
         phoneTxt.setText("");
         emailTxt.setText("");
+        cmbCity.setSelectedIndex(0);
+        cmbComm.setSelectedIndex(0);
+        
         
         JOptionPane.showMessageDialog(this,"New Hospital Added.");
         
@@ -293,6 +347,8 @@ public class HospitalDirectory extends javax.swing.JPanel {
         addressTxt.setText(selectedHos.getAddress());
         emailTxt.setText(selectedHos.getEmail());
         phoneTxt.setText(String.valueOf(selectedHos.getPhoneNo()));
+        cmbComm.setSelectedItem(selectedHos.getComm().getCommName());
+        cmbCity.setSelectedItem(selectedHos.getCity().getName());
         
         createBtn.setEnabled(false);
     }//GEN-LAST:event_viewBtnActionPerformed
@@ -311,6 +367,14 @@ public class HospitalDirectory extends javax.swing.JPanel {
         String add = addressTxt.getText();
         String emailId = emailTxt.getText();
         long phone = Long.parseLong(phoneTxt.getText());
+        String cmbVal = String.valueOf(cmbCity.getSelectedItem());
+        String cmbValC = String.valueOf(cmbComm.getSelectedItem());
+        City cityId = SystemAdmin.cityDir.getCityDir().stream()
+                    .filter( x -> x.getName().equals(cmbVal))
+                    .findFirst().get();
+        Community commId = SystemAdmin.commDir.getDirectoryCom().stream()
+                    .filter( x -> x.getCommName().equals(cmbValC))
+                    .findFirst().get();
         
         
         Hospital hos = SystemAdmin.hosDir.getHospitalList().get(selected);
@@ -321,6 +385,8 @@ public class HospitalDirectory extends javax.swing.JPanel {
         hos.setPhoneNo(phone);
         hos.setAddress(add);
         hos.setEmail(emailId);
+        hos.setComm(commId);
+        hos.setCity(cityId);
         
         populateTable();
           
@@ -329,9 +395,16 @@ public class HospitalDirectory extends javax.swing.JPanel {
         addressTxt.setText("");
         phoneTxt.setText("");
         emailTxt.setText("");
+        cmbCity.setSelectedIndex(0);
+        cmbComm.setSelectedIndex(0);
         
         createBtn.setEnabled(true);
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void cmbCommActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCommActionPerformed
+        // TODO add your handling code here:
+        populateCities();
+    }//GEN-LAST:event_cmbCommActionPerformed
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) hosTbl.getModel();
@@ -343,16 +416,30 @@ public class HospitalDirectory extends javax.swing.JPanel {
             row[0] = hos.getHospitalId();
             row[1] = hos.getHospitalName();
             row[2] = hos.getAddress();
-            row[3] = hos.getPhoneNo();
-            row[4] = hos.getEmail();
+            row[3] = hos.getComm().getCommName();
+            row[4] = hos.getCity().getName();
 
             model.addRow(row);
         }
     }
     
+    private void populateCities(){
+        cmbCity.removeAllItems();
+        cmbCity.addItem("Select City");
+        SystemAdmin.cityDir.getCityDir().forEach( c -> cmbCity.addItem(c.getName()));
+    }
+    
+    private void populateComms(){
+        cmbComm.removeAllItems();
+        cmbComm.addItem("Select Community");
+        SystemAdmin.commDir.getDirectoryCom().forEach( c -> cmbComm.addItem(c.getCommName()));
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressTxt;
+    private javax.swing.JComboBox<String> cmbCity;
+    private javax.swing.JComboBox<String> cmbComm;
     private javax.swing.JButton createBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField emailTxt;
@@ -364,6 +451,8 @@ public class HospitalDirectory extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel loginLabel1;
     private javax.swing.JTextField phoneTxt;

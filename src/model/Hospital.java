@@ -15,13 +15,17 @@ public class Hospital {
     private String address;
     private long phoneNo;
     private String email;
+    private Community comm;
+    private City city;
 
-    public Hospital(long hospitalId, String hospitalName, String address, long phoneNo, String email) {
+    public Hospital(long hospitalId, String hospitalName, String address, long phoneNo, String email,Community comm, City city) {
         this.hospitalId = hospitalId;
         this.hospitalName = hospitalName;
         this.address = address;
         this.phoneNo = phoneNo;
         this.email = email;
+        this.comm = comm;
+        this.city = city;
     }
 
     public long getHospitalId() {
@@ -62,6 +66,24 @@ public class Hospital {
 
     public void setEmail(String email) {
         this.email = email;
+        
+        
+    }
+
+    public Community getComm() {
+        return comm;
+    }
+
+    public void setComm(Community comm) {
+        this.comm = comm;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
     
 }

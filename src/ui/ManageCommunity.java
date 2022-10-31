@@ -247,6 +247,7 @@ public class ManageCommunity extends javax.swing.JPanel {
         commTxt.setText("");
         zipTxt.setText("");
         createBtn.setEnabled(true);
+        cmbCity.setSelectedIndex(0);
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void createBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBtnActionPerformed
