@@ -63,6 +63,14 @@
                           <Component id="logoutBtn" alignment="0" max="32767" attributes="0"/>
                           <Component id="doctorDir" alignment="0" max="32767" attributes="0"/>
                           <Component id="patientDir" alignment="0" max="32767" attributes="0"/>
+                          <Component id="hosDirBtn" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="communityBtn" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cityBtn" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -70,7 +78,13 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
+                      <Component id="cityBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="communityBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="hosDirBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="patientDir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="doctorDir" min="-2" max="-2" attributes="0"/>
@@ -80,7 +94,7 @@
                       <Component id="appBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       <Component id="logoutBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="340" max="32767" attributes="0"/>
+                      <EmptySpace pref="230" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -112,7 +126,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="doctorDir">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Doctors Directory"/>
+                <Property name="text" type="java.lang.String" value="Doctor Directory"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doctorDirActionPerformed"/>
@@ -124,6 +138,30 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="patientDirActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="hosDirBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hospital Directory"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hosDirBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="cityBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Manage City"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cityBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="communityBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mange Community"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="communityBtnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

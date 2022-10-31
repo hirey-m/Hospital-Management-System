@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import model.House;
 import model.Patient;
 import model.PatientDirectory;
+import model.Person;
 import model.SystemAdmin;
 
 /**
@@ -20,11 +21,16 @@ public class PatientView extends javax.swing.JPanel {
     /**
      * Creates new form PatientView
      */
+    private Person loggedPerson;
     PatientDirectory patDir = SystemAdmin.patDir;
     String gender = "";
-    public PatientView() {
+    public PatientView(Person loggedInPerson) {
         initComponents();
-        
+        deleteBtn.setVisible(false);
+        this.loggedPerson = loggedInPerson;
+        if(loggedInPerson.getRole().equals(SystemAdmin.UserRole.SYS_ADMIN)){
+            deleteBtn.setVisible(true);
+        }
         populateTable();
     }
 

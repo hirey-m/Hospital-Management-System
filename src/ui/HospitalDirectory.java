@@ -7,6 +7,7 @@ package ui;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Hospital;
+import model.Person;
 import model.SystemAdmin;
 
 /**
@@ -18,9 +19,12 @@ public class HospitalDirectory extends javax.swing.JPanel {
     /**
      * Creates new form HospitalDirectory
      */
-    public HospitalDirectory() {
+    public HospitalDirectory(Person loggedInPerson) {
         initComponents();
-        
+        deleteBtn.setVisible(false);
+        if(loggedInPerson.getRole().equals(SystemAdmin.UserRole.SYS_ADMIN)){
+            deleteBtn.setVisible(true);
+        }
         populateTable();
     }
 

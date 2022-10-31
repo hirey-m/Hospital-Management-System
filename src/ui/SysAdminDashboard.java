@@ -40,6 +40,9 @@ public class SysAdminDashboard extends javax.swing.JFrame {
         logoutBtn = new javax.swing.JButton();
         doctorDir = new javax.swing.JButton();
         patientDir = new javax.swing.JButton();
+        hosDirBtn = new javax.swing.JButton();
+        cityBtn = new javax.swing.JButton();
+        communityBtn = new javax.swing.JButton();
         rightPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,7 +68,7 @@ public class SysAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        doctorDir.setText("Doctors Directory");
+        doctorDir.setText("Doctor Directory");
         doctorDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doctorDirActionPerformed(evt);
@@ -76,6 +79,27 @@ public class SysAdminDashboard extends javax.swing.JFrame {
         patientDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patientDirActionPerformed(evt);
+            }
+        });
+
+        hosDirBtn.setText("Hospital Directory");
+        hosDirBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hosDirBtnActionPerformed(evt);
+            }
+        });
+
+        cityBtn.setText("Manage City");
+        cityBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cityBtnActionPerformed(evt);
+            }
+        });
+
+        communityBtn.setText("Mange Community");
+        communityBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                communityBtnActionPerformed(evt);
             }
         });
 
@@ -90,12 +114,24 @@ public class SysAdminDashboard extends javax.swing.JFrame {
                     .addComponent(historyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(logoutBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(doctorDir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(patientDir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(patientDir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hosDirBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPaneLayout.createSequentialGroup()
+                        .addGroup(leftPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(communityBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cityBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         leftPaneLayout.setVerticalGroup(
             leftPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leftPaneLayout.createSequentialGroup()
-                .addGap(211, 211, 211)
+                .addGap(198, 198, 198)
+                .addComponent(cityBtn)
+                .addGap(18, 18, 18)
+                .addComponent(communityBtn)
+                .addGap(18, 18, 18)
+                .addComponent(hosDirBtn)
+                .addGap(18, 18, 18)
                 .addComponent(patientDir)
                 .addGap(18, 18, 18)
                 .addComponent(doctorDir)
@@ -105,7 +141,7 @@ public class SysAdminDashboard extends javax.swing.JFrame {
                 .addComponent(appBtn)
                 .addGap(68, 68, 68)
                 .addComponent(logoutBtn)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(leftPane);
@@ -163,15 +199,33 @@ public class SysAdminDashboard extends javax.swing.JFrame {
 
     private void doctorDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorDirActionPerformed
         // TODO add your handling code here:
-        DoctorView dView = new DoctorView();
+        DoctorView dView = new DoctorView(loggedPerson);
         splitPane.setRightComponent(dView);
     }//GEN-LAST:event_doctorDirActionPerformed
 
     private void patientDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientDirActionPerformed
         // TODO add your handling code here:
-        PatientView view = new PatientView();
+        PatientView view = new PatientView(loggedPerson);
         splitPane.setRightComponent(view);
     }//GEN-LAST:event_patientDirActionPerformed
+
+    private void hosDirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hosDirBtnActionPerformed
+        // TODO add your handling code here:
+        HospitalDirectory dir = new HospitalDirectory(loggedPerson);
+        splitPane.setRightComponent(dir);
+    }//GEN-LAST:event_hosDirBtnActionPerformed
+
+    private void cityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityBtnActionPerformed
+        // TODO add your handling code here:
+        ManageCity city = new ManageCity(loggedPerson);
+        splitPane.setRightComponent(city);
+    }//GEN-LAST:event_cityBtnActionPerformed
+
+    private void communityBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_communityBtnActionPerformed
+        // TODO add your handling code here:
+        ManageCommunity com = new ManageCommunity(loggedPerson);
+        splitPane.setRightComponent(com);
+    }//GEN-LAST:event_communityBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,8 +266,11 @@ public class SysAdminDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton appBtn;
+    private javax.swing.JButton cityBtn;
+    private javax.swing.JButton communityBtn;
     private javax.swing.JButton doctorDir;
     private javax.swing.JButton historyBtn;
+    private javax.swing.JButton hosDirBtn;
     private javax.swing.JPanel leftPane;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton patientDir;

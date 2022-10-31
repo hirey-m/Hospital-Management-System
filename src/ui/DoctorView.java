@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Doctor;
 import model.DoctorDirectory;
 import model.House;
+import model.Person;
 import model.SystemAdmin;
 
 /**
@@ -17,15 +18,20 @@ import model.SystemAdmin;
  * @author manavhirey
  */
 public class DoctorView extends javax.swing.JPanel {
-
+private Person loggedPerson;
     /**
      * Creates new form DoctorView
      */
     DoctorDirectory docDir = SystemAdmin.docDir;
     String empId = "";
     String gender = "";
-    public DoctorView() {
+    public DoctorView(Person loggedInPerson) {
         initComponents();
+        deleteBtn.setVisible(false);
+        this.loggedPerson = loggedInPerson;
+        if(loggedInPerson.getRole().equals(SystemAdmin.UserRole.SYS_ADMIN)){
+            deleteBtn.setVisible(true);
+        }
         populateTable();
     }
 

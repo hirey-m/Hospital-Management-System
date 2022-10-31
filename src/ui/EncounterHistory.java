@@ -6,7 +6,6 @@ package ui;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Doctor;
 import model.Encounter;
 import model.Person;
 import model.SystemAdmin;

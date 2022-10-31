@@ -229,8 +229,8 @@ public class LoginFrame extends javax.swing.JFrame {
                 this.loginFrame.setVisible(false);
             }
             if(person.getRole() == UserRole.COM_ADMIN){
-                CityManager.cityManager = new CityManager();
-                CityManager.cityManager.setVisible(true);
+                CommunityAdmin.communityAdmin = new CommunityAdmin(person);
+                CommunityAdmin.communityAdmin.setVisible(true);
                 this.loginFrame.setVisible(false);
             }
             
