@@ -5,6 +5,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 import model.Person;
 import model.Person.UserRole;
 
@@ -32,7 +33,20 @@ public class SystemAdmin extends Person {
     static{
         personDir.getPersonList().add(new SystemAdmin("193290210", 193289821L, "Admin", "MALE", "12/01/2001", 178389210L, "admin@gmail.com", new House("Park Drive",21,02215L), "admin", "admin",UserRole.SYS_ADMIN));
         Patient p1 = new Patient(732838L, "manavhirey", "MALE", "12/01/2001", 178389210L, "manav@gmail.com", new House("Park Drive",21,02215L), "manav", "manav",UserRole.PATIENT);
-        Doctor d1 = new Doctor("832782389", "Lilavati", "orthodontist", 873893932L, "People", "OTHER", "29/03/2001", 98278348993L, "doctor@lilavati", new House("Park Drive",21,02215L), "doctorsRox", "doctor", SystemAdmin.UserRole.DOCTOR);
+        
+        ArrayList<String> strings = new ArrayList<String>();
+        strings.add("Borivali");
+        strings.add("Kandivali");
+        strings.add("Andheri");
+        
+        City ci1 = new City("Mumbai",478437843L, strings);
+        Community c1 = new Community(78437834L,"Borivali",78437843L,ci1.getCityID());
+        Hospital hos1 = new Hospital(23898932L, "Lilavati", "Bandra Kurla", 7837382849L, "admin@lilavati",c1, ci1);
+        Doctor d1 = new Doctor("832782389", hos1, "orthodontist", 873893932L, "People", "OTHER", "29/03/2001", 98278348993L, "doctor@lilavati", new House("Park Drive",21,02215L), "doctorsRox", "doctor", SystemAdmin.UserRole.DOCTOR);
+        
+        commDir.getDirectoryCom().add(c1);
+        hosDir.getHospitalList().add(hos1);
+        cityDir.getCityDir().add(ci1);
         patDir.getPatientList().add(p1);
         personDir.getPersonList().add(p1);
         docDir.getDoctorList().add(d1);

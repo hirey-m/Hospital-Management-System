@@ -144,6 +144,11 @@ public class EncounterHistory extends javax.swing.JPanel {
         jLabel1.setText("Search Patient:");
 
         searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -282,8 +287,21 @@ public class EncounterHistory extends javax.swing.JPanel {
         pulseTxt.setText("");
         diagTxt.setText("");
         noteTxt.setText("");
+        
+        JOptionPane.showMessageDialog(this, "Patient VitalSigns Updated.");
 
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+        if(patientSearch == null){
+            JOptionPane.showMessageDialog(this, "Enter Keywords to search.");
+        }else{
+            String search = patientSearch.getText();
+            populateBySearch(search);
+        }
+        
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     private void populateTable(){
          DefaultTableModel model = (DefaultTableModel) encounterTbl.getModel();
@@ -297,9 +315,29 @@ public class EncounterHistory extends javax.swing.JPanel {
             row[1] = enc.getDate();
             row[2] = enc.getTime();
             row[3] = enc.getDoctorName().getName();
-            row[4] = enc.getDoctorName().getNameHospital();
+            row[4] = enc.getDoctorName().getNameHospital().getHospitalName();
 
             model.addRow(row);
+        }
+    }
+    
+    private void populateBySearch(String search){
+        DefaultTableModel model = (DefaultTableModel) encounterTbl.getModel();
+        model.setRowCount(0);
+        
+        for(Encounter enc: SystemAdmin.encHistRef.getPastList()){
+            if(search.equals(enc.getPersonName().getName())){
+                Object[] row = new Object[5];
+                row[0] = enc.getAppointmentID();
+                //row[0] = ne.getEmployeeId();
+                row[1] = enc.getDate();
+                row[2] = enc.getTime();
+                row[3] = enc.getDoctorName().getName();
+                row[4] = enc.getDoctorName().getNameHospital().getHospitalName();
+
+            model.addRow(row);
+            }
+            
         }
     }
 

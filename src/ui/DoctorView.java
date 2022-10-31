@@ -7,8 +7,10 @@ package ui;
 import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.City;
 import model.Doctor;
 import model.DoctorDirectory;
+import model.Hospital;
 import model.House;
 import model.Person;
 import model.SystemAdmin;
@@ -32,6 +34,7 @@ private Person loggedPerson;
         if(loggedInPerson.getRole().equals(SystemAdmin.UserRole.SYS_ADMIN)){
             deleteBtn.setVisible(true);
         }
+        populateHos();
         populateTable();
     }
 
@@ -80,7 +83,7 @@ private Person loggedPerson;
         zipTxt = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        hosTxt = new javax.swing.JTextField();
+        cmbHos = new javax.swing.JComboBox<>();
 
         docTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -216,6 +219,8 @@ private Person loggedPerson;
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Hospital:");
 
+        cmbHos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -250,20 +255,19 @@ private Person loggedPerson;
                                 .addComponent(jLabel11)
                                 .addGap(18, 18, 18)
                                 .addComponent(specialTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(jLabel9)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(maleRB)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(femaleRB)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(otherRB))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel14)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(hosTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(maleRB)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(femaleRB)
+                                .addGap(18, 18, 18)
+                                .addComponent(otherRB)
+                                .addGap(137, 137, 137))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbHos, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(187, 187, 187))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -339,8 +343,8 @@ private Person loggedPerson;
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hosTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
+                    .addComponent(jLabel14)
+                    .addComponent(cmbHos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -403,21 +407,17 @@ private Person loggedPerson;
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 839, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 6, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 6, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 810, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -445,7 +445,7 @@ private Person loggedPerson;
         houseTxt.setText("");
         zipTxt.setText("");
         streetTxt.setText("");
-        hosTxt.setText("");
+        cmbHos.setSelectedIndex(0);
         specialTxt.setText("");
         userTxt.setText("");
         passwordTxt.setText("");
@@ -471,9 +471,12 @@ private Person loggedPerson;
         String username = userTxt.getText();
         String password = String.valueOf(passwordTxt.getPassword());
         String special = specialTxt.getText();
-        String hosName = hosTxt.getText();
+        String hosName = String.valueOf(cmbHos.getSelectedItem());
+        Hospital hos = SystemAdmin.hosDir.getHospitalList().stream()
+                    .filter( x -> x.getHospitalName().equals(hosName))
+                    .findFirst().get();
         
-        Doctor newdoc = new Doctor(empId,hosName,special,ssn,name,gender,dob,phone,email,house,username,password, SystemAdmin.UserRole.DOCTOR);
+        Doctor newdoc = new Doctor(empId,hos,special,ssn,name,gender,dob,phone,email,house,username,password, SystemAdmin.UserRole.DOCTOR);
         SystemAdmin.docDir.getDoctorList().add(newdoc);
         SystemAdmin.personDir.getPersonList().add(newdoc);
         
@@ -490,6 +493,7 @@ private Person loggedPerson;
         maleRB.setSelected(false);
         femaleRB.setSelected(false);
         otherRB.setSelected(false);
+        cmbHos.setSelectedIndex(0);
         
         JOptionPane.showMessageDialog(this,"New Patient Added.");
         
@@ -537,7 +541,7 @@ private Person loggedPerson;
         userTxt.setText(selectedDoc.getUsername());
         passwordTxt.setText(selectedDoc.getPassword());
         specialTxt.setText(selectedDoc.getSpecialization());
-        hosTxt.setText(selectedDoc.getNameHospital());
+        cmbHos.setSelectedItem(selectedDoc.getNameHospital().getHospitalName());
         
         createBtn.setEnabled(false);
     }//GEN-LAST:event_viewBtnActionPerformed
@@ -581,7 +585,12 @@ private Person loggedPerson;
         long ssn = Long.parseLong(ssnTxt.getText());
         String name = nameTxt.getText();
         String special = specialTxt.getText();
-        String hosName = hosTxt.getText();
+        
+        String hosName = String.valueOf(cmbHos.getSelectedItem());
+        Hospital hos = SystemAdmin.hosDir.getHospitalList().stream()
+                    .filter( x -> x.getHospitalName().equals(hosName))
+                    .findFirst().get();
+        
         String dob = dobTxt.getText();
         long phone = Long.parseLong(phoneTxt.getText());
         String email = emailTxt.getText();
@@ -611,7 +620,7 @@ private Person loggedPerson;
         doc.setSsn(ssn);
         doc.setName(name);
         doc.setSpecialization(special);
-        doc.setNameHospital(hosName);
+        doc.setNameHospital(hos);
         doc.setDob(dob);
         doc.setGender(patientGender);   
         doc.setPhoneNo(phone);
@@ -632,7 +641,7 @@ private Person loggedPerson;
         zipTxt.setText("");
         userTxt.setText("");
         passwordTxt.setText("");
-        hosTxt.setText("");
+        cmbHos.setSelectedIndex(0);
         specialTxt.setText("");
         
         femaleRB.setSelected(false);
@@ -652,22 +661,27 @@ private Person loggedPerson;
             row[0] = p.getEmpId();
             //row[0] = ne.getEmployeeId();
             row[1] = p.getName();
-            row[2] = p.getNameHospital();
+            row[2] = p.getNameHospital().getHospitalName();
             row[3] = p.getSpecialization();
             row[4] = p.getGender();
 
             model.addRow(row);
         }
     }
-
+    
+    private void populateHos(){
+        cmbHos.removeAllItems();
+        cmbHos.addItem("Select City");
+        SystemAdmin.hosDir.getHospitalList().forEach( c -> cmbHos.addItem(c.getHospitalName()));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbHos;
     private javax.swing.JButton createBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField dobTxt;
     private javax.swing.JTable docTbl;
     private javax.swing.JTextField emailTxt;
     private javax.swing.JRadioButton femaleRB;
-    private javax.swing.JTextField hosTxt;
     private javax.swing.JTextField houseTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

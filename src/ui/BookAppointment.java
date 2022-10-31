@@ -233,12 +233,12 @@ public class BookAppointment extends javax.swing.JPanel {
         Encounter bookenc = new Encounter(appId, new VitalSigns(0,0,0,"",""), date, time, loggedPerson, docPicked);
         SystemAdmin.encHistRef.getPastList().add(bookenc);
         
+        patNameTxt.setText(loggedPerson.getName());
         docNameTxt.setText("");
-        patNameTxt.setText("");
         dateTxt.setText("");
         timeTxt.setText("");
         
-        JOptionPane.showMessageDialog(this,"New Patient Added.");
+        JOptionPane.showMessageDialog(this,"New Encounter Added.");
 
     }//GEN-LAST:event_bookBtnActionPerformed
 
@@ -263,7 +263,7 @@ public class BookAppointment extends javax.swing.JPanel {
             row[0] = p.getName();
             //row[0] = ne.getEmployeeId();
             row[1] = p.getSpecialization();
-            row[2] = p.getNameHospital();
+            row[2] = p.getNameHospital().getHospitalName();
             row[3] = p.getEmail();
             row[4] = p.getGender();
 
@@ -276,12 +276,12 @@ public class BookAppointment extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(Doctor doc: SystemAdmin.docDir.getDoctorList()){
-            if(search.equals(doc.getNameHospital())){
+            if(search.equals(doc.getNameHospital().getHospitalName())){
                 Object[] row = new Object[5];
                 row[0] = doc.getName();
                 //row[0] = ne.getEmployeeId();
                 row[1] = doc.getSpecialization();
-                row[2] = doc.getNameHospital();
+                row[2] = doc.getNameHospital().getHospitalName();
                 row[3] = doc.getEmail();
                 row[4] = doc.getGender();
 
