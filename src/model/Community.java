@@ -15,11 +15,13 @@ public class Community {
     private long communityId;
     private String commName;
     private long zip;
+    private long cityId;
 
-    public Community(long communityId, String commName, long zip) {
+    public Community(long communityId, String commName, long zip, long cityId) {
         this.communityId = communityId;
         this.commName = commName;
         this.zip = zip;
+        this.cityId = cityId;
     }
 
     public long getCommunityId() {
@@ -45,6 +47,15 @@ public class Community {
     public void setZip(long zip) {
         this.zip = zip;
     }
+
+    public long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(long cityId) {
+        this.cityId = cityId;
+    }
+    
     
     
 }

@@ -538,6 +538,7 @@ public class PatientView extends javax.swing.JPanel {
         patient.setDob(dob);
         patient.setGender(patientGender);   
         patient.setPhoneNo(phone);
+        patient.setEmail(email);
         patient.setAddress(house);
         patient.setUsername(username);
         
