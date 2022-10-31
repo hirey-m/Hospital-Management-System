@@ -4,11 +4,13 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Doctor;
 import model.Encounter;
 import model.Person;
 import model.SystemAdmin;
+import model.VitalSigns;
 
 /**
  *
@@ -120,8 +122,18 @@ public class EncounterHistory extends javax.swing.JPanel {
         loginLabel5.setText("Note:");
 
         viewBtn.setText("View");
+        viewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBtnActionPerformed(evt);
+            }
+        });
 
         updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +236,55 @@ public class EncounterHistory extends javax.swing.JPanel {
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
+        // TODO add your handling code here:
+        int selected = encounterTbl.getSelectedRow();
+        
+        if (selected < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to add VitalSigns.");
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) encounterTbl.getModel();
+        Encounter selectedEnc = SystemAdmin.encHistRef.getPastList().get(selected);
+        
+        bodyTempTxt.setText(String.valueOf(selectedEnc.getVital().getTemp()));
+        bpTxt.setText(String.valueOf(selectedEnc.getVital().getBp()));
+        pulseTxt.setText(String.valueOf(selectedEnc.getVital().getPulse()));
+        diagTxt.setText(String.valueOf(selectedEnc.getVital().getDiagnosis()));
+        noteTxt.setText(String.valueOf(selectedEnc.getVital().getNote()));
+        
+        JOptionPane.showMessageDialog(this, "Encounter Fetched. Please Enter Vitals.");
+    }//GEN-LAST:event_viewBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+        int selected = encounterTbl.getSelectedRow();
+        
+        if (selected < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to update!");
+            return;
+        }
+        
+        double bodyTemp = Double.parseDouble(bodyTempTxt.getText());
+        double name = Double.parseDouble(bpTxt.getText());
+        double pulse = Double.parseDouble(pulseTxt.getText());
+        String diag = diagTxt.getText();
+        String note = noteTxt.getText();
+        VitalSigns vitals = new VitalSigns(bodyTemp,name,pulse,diag,note);
+        
+        Encounter enc = SystemAdmin.encHistRef.getPastList().get(selected);
+        
+        enc.setVital(vitals);
+        
+        bodyTempTxt.setText("");
+        bpTxt.setText("");
+        pulseTxt.setText("");
+        diagTxt.setText("");
+        noteTxt.setText("");
+
+    }//GEN-LAST:event_updateBtnActionPerformed
 
     private void populateTable(){
          DefaultTableModel model = (DefaultTableModel) encounterTbl.getModel();

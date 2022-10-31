@@ -222,6 +222,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 SysAdminDashboard.adminDashboard = new SysAdminDashboard(person);
                 SysAdminDashboard.adminDashboard.setVisible(true);
                 this.loginFrame.setVisible(false);
+            }
             if(person.getRole() == UserRole.HOS_ADMIN){
                 HospitalAdmin.hospitalAdmin = new HospitalAdmin(person);
                 HospitalAdmin.hospitalAdmin.setVisible(true);
@@ -232,7 +233,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 CityManager.cityManager.setVisible(true);
                 this.loginFrame.setVisible(false);
             }
-            }
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "User does not exist.");
             usernameTxt.setText("");

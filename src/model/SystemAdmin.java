@@ -37,8 +37,11 @@ public class SystemAdmin extends Person {
         personDir.getPersonList().add(p1);
         docDir.getDoctorList().add(d1);
         personDir.getPersonList().add(d1);
+        personDir.getPersonList().add(new CommunityAdmin(78489439L, "ComAdmin", "OTHER", "12/01/2003", 8984289983L, "comadmin@gmail.com", new House("Park Ave",23,02212L), "commadmin", "commadmin", "748783487", "23/01/2003", UserRole.COM_ADMIN));
+        personDir.getPersonList().add(new HospitalAdmin(92398392L, "Hospital Admin", "OTHER", "10/3/1997", 892389389L, "hosadmin@gmail.com", new House("Weston Ave",24,02211L), "hosAdmin", "hosadmin", SystemAdmin.UserRole.HOS_ADMIN));
     }
 
+    
     public String getAdminId() {
         return adminId;
     }
