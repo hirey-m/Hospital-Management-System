@@ -5,6 +5,7 @@
 package ui;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
@@ -115,6 +116,11 @@ public class RegisterFrame extends javax.swing.JFrame {
 
         ssnTxt.setBackground(new java.awt.Color(231, 246, 242));
         ssnTxt.setForeground(new java.awt.Color(57, 91, 100));
+        ssnTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ssnTxtFocusLost(evt);
+            }
+        });
 
         streetTxt.setBackground(new java.awt.Color(231, 246, 242));
         streetTxt.setForeground(new java.awt.Color(57, 91, 100));
@@ -134,6 +140,11 @@ public class RegisterFrame extends javax.swing.JFrame {
 
         zipTxt.setBackground(new java.awt.Color(231, 246, 242));
         zipTxt.setForeground(new java.awt.Color(57, 91, 100));
+        zipTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                zipTxtKeyPressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(231, 246, 242));
@@ -142,6 +153,11 @@ public class RegisterFrame extends javax.swing.JFrame {
 
         dobTxt.setBackground(new java.awt.Color(231, 246, 242));
         dobTxt.setForeground(new java.awt.Color(57, 91, 100));
+        dobTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dobTxtFocusLost(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(231, 246, 242));
@@ -172,10 +188,15 @@ public class RegisterFrame extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(231, 246, 242));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Address:");
+        jLabel7.setText("House No:");
 
         houseTxt.setBackground(new java.awt.Color(231, 246, 242));
         houseTxt.setForeground(new java.awt.Color(57, 91, 100));
+        houseTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                houseTxtKeyPressed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(231, 246, 242));
@@ -455,6 +476,72 @@ public class RegisterFrame extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_phoneTxtKeyPressed
+
+    private void ssnTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ssnTxtFocusLost
+        // TODO add your handling code here:
+         if(!ssnTxt.getText().equals("")){
+            List<Long> ssnList = SystemAdmin.personDir.getPersonList().stream().map(x -> x.getSsn()).toList();
+            if(ssnList.contains(Long.parseLong(ssnTxt.getText()))){
+                JOptionPane.showMessageDialog(this, "SSN already exists.");
+            }
+        }
+    }//GEN-LAST:event_ssnTxtFocusLost
+
+    private void houseTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_houseTxtKeyPressed
+        // TODO add your handling code here:
+        String phoneNumber = houseTxt.getText();
+        int lengthOfHouseNumber = phoneNumber.length();
+        char checkChar = evt.getKeyChar();
+        if (checkChar >= '0' && checkChar <= '9') {
+            if (lengthOfHouseNumber < 3) {
+                houseTxt.setEditable(true);
+            } else {
+                houseTxt.setEditable(false);
+                JOptionPane.showMessageDialog(this, "Cannot add more than 3 Numbers!");
+            }
+        } else {
+            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
+                houseTxt.setEditable(true);
+            } else {
+                houseTxt.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_houseTxtKeyPressed
+
+    private void dobTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dobTxtFocusLost
+        // TODO add your handling code here:
+        if(!dobTxt.getText().equals("")){
+            String regexPattern = "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$";
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(dobTxt.getText());
+        
+            if(!matcher.matches()){
+                JOptionPane.showMessageDialog(null,"Enter a valid date in MM/DD/YYYY format.");
+                dobTxt.setText("");
+            }
+        }
+    }//GEN-LAST:event_dobTxtFocusLost
+
+    private void zipTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_zipTxtKeyPressed
+        // TODO add your handling code here:
+         String phoneNumber = zipTxt.getText();
+        int lengthOfHouseNumber = phoneNumber.length();
+        char checkChar = evt.getKeyChar();
+        if (checkChar >= '0' && checkChar <= '9') {
+            if (lengthOfHouseNumber < 6) {
+                zipTxt.setEditable(true);
+            } else {
+                zipTxt.setEditable(false);
+                JOptionPane.showMessageDialog(this, "Cannot add more than 6 Numbers!");
+            }
+        } else {
+            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
+                zipTxt.setEditable(true);
+            } else {
+                zipTxt.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_zipTxtKeyPressed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.City;
@@ -77,6 +78,11 @@ public class ManageCommunity extends javax.swing.JPanel {
 
         commId.setBackground(new java.awt.Color(231, 246, 242));
         commId.setForeground(new java.awt.Color(57, 91, 100));
+        commId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                commIdFocusLost(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(231, 246, 242));
@@ -324,6 +330,16 @@ public class ManageCommunity extends javax.swing.JPanel {
 
         createBtn.setEnabled(false);
     }//GEN-LAST:event_viewBtnActionPerformed
+
+    private void commIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_commIdFocusLost
+        // TODO add your handling code here:
+        if(!commId.getText().equals("")){
+            List<Long> commList = SystemAdmin.commDir.getDirectoryCom().stream().map(x -> x.getCommunityId()).toList();
+            if(commList.contains(Long.parseLong(commId.getText()))){
+                JOptionPane.showMessageDialog(this, "CommunityID already in use.");
+            }
+        }
+    }//GEN-LAST:event_commIdFocusLost
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) commTable.getModel();

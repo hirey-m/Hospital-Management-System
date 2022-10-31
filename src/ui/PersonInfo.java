@@ -4,6 +4,9 @@
  */
 package ui;
 
+import java.awt.event.KeyEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import model.House;
 import model.Person;
@@ -107,6 +110,11 @@ public class PersonInfo extends javax.swing.JPanel {
         jLabel4.setText("Date of Birth:");
 
         dobTxt.setBackground(new java.awt.Color(231, 246, 242));
+        dobTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dobTxtFocusLost(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(231, 246, 242));
@@ -114,6 +122,11 @@ public class PersonInfo extends javax.swing.JPanel {
         jLabel5.setText("Email:");
 
         emailTxt.setBackground(new java.awt.Color(231, 246, 242));
+        emailTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailTxtFocusLost(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(231, 246, 242));
@@ -121,14 +134,24 @@ public class PersonInfo extends javax.swing.JPanel {
         jLabel6.setText("Phone Number:");
 
         phoneTxt.setBackground(new java.awt.Color(231, 246, 242));
+        phoneTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                phoneTxtKeyPressed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(231, 246, 242));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("House:");
+        jLabel7.setText("House No.");
 
         houseTxt.setBackground(new java.awt.Color(231, 246, 242));
         houseTxt.setForeground(new java.awt.Color(57, 91, 100));
+        houseTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                houseTxtKeyPressed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(231, 246, 242));
@@ -175,6 +198,11 @@ public class PersonInfo extends javax.swing.JPanel {
 
         zipTxt.setBackground(new java.awt.Color(231, 246, 242));
         zipTxt.setForeground(new java.awt.Color(57, 91, 100));
+        zipTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                zipTxtKeyPressed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(231, 246, 242));
@@ -304,6 +332,97 @@ public class PersonInfo extends javax.swing.JPanel {
         
         JOptionPane.showMessageDialog(this, "Person Information Updated.");
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void dobTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dobTxtFocusLost
+        // TODO add your handling code here:
+        if(!dobTxt.getText().equals("")){
+            String regexPattern = "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$";
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(dobTxt.getText());
+        
+            if(!matcher.matches()){
+                JOptionPane.showMessageDialog(null,"Enter a valid date in MM/DD/YYYY format.");
+                dobTxt.setText("");
+            }
+        }
+    }//GEN-LAST:event_dobTxtFocusLost
+
+    private void emailTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTxtFocusLost
+        // TODO add your handling code here:
+        if(!emailTxt.getText().equals("")){
+            String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"+ "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(emailTxt.getText());
+        
+            if(!matcher.matches()){
+                JOptionPane.showMessageDialog(null,"Enter a valid Email");
+                emailTxt.setText("");
+            }
+        }
+    }//GEN-LAST:event_emailTxtFocusLost
+
+    private void zipTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_zipTxtKeyPressed
+        // TODO add your handling code here:
+        String zip = zipTxt.getText();
+        int lengthOfHouseNumber = zip.length();
+        char checkChar = evt.getKeyChar();
+        if (checkChar >= '0' && checkChar <= '9') {
+            if (lengthOfHouseNumber < 6) {
+                zipTxt.setEditable(true);
+            } else {
+                zipTxt.setEditable(false);
+                JOptionPane.showMessageDialog(this, "Cannot add more than 6 Numbers!");
+            }
+        } else {
+            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
+                zipTxt.setEditable(true);
+            } else {
+                zipTxt.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_zipTxtKeyPressed
+
+    private void houseTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_houseTxtKeyPressed
+        // TODO add your handling code here:
+        String phoneNumber = houseTxt.getText();
+        int lengthOfHouseNumber = phoneNumber.length();
+        char checkChar = evt.getKeyChar();
+        if (checkChar >= '0' && checkChar <= '9') {
+            if (lengthOfHouseNumber < 3) {
+                houseTxt.setEditable(true);
+            } else {
+                houseTxt.setEditable(false);
+                JOptionPane.showMessageDialog(this, "Cannot add more than 3 Numbers!");
+            }
+        } else {
+            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
+                houseTxt.setEditable(true);
+            } else {
+                houseTxt.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_houseTxtKeyPressed
+
+    private void phoneTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneTxtKeyPressed
+        // TODO add your handling code here:
+        String phoneNumber = phoneTxt.getText();
+        int lengthOfPhoneNumber = phoneNumber.length();
+        char checkChar = evt.getKeyChar();
+        if (checkChar >= '0' && checkChar <= '9') {
+            if (lengthOfPhoneNumber < 10) {
+                phoneTxt.setEditable(true);
+            } else {
+                phoneTxt.setEditable(false);
+                JOptionPane.showMessageDialog(this, "Cannot add more than 10 Numbers!");
+            }
+        } else {
+            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
+                phoneTxt.setEditable(true);
+            } else {
+                phoneTxt.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_phoneTxtKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

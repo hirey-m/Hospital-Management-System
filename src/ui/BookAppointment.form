@@ -238,6 +238,9 @@
           <Color blue="64" green="5b" red="39" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="timeTxtFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="dateTxt">
       <Properties>
@@ -248,6 +251,9 @@
           <Color blue="64" green="5b" red="39" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="dateTxtFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="loginLabel2">
       <Properties>

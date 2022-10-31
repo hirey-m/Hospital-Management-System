@@ -4,6 +4,10 @@
  */
 package ui;
 
+import java.awt.event.KeyEvent;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.City;
@@ -110,6 +114,11 @@ public class HospitalDirectory extends javax.swing.JPanel {
 
         hosId.setBackground(new java.awt.Color(231, 246, 242));
         hosId.setForeground(new java.awt.Color(57, 91, 100));
+        hosId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                hosIdFocusLost(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(231, 246, 242));
@@ -118,6 +127,11 @@ public class HospitalDirectory extends javax.swing.JPanel {
 
         phoneTxt.setBackground(new java.awt.Color(231, 246, 242));
         phoneTxt.setForeground(new java.awt.Color(57, 91, 100));
+        phoneTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                phoneTxtKeyPressed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(231, 246, 242));
@@ -126,6 +140,11 @@ public class HospitalDirectory extends javax.swing.JPanel {
 
         emailTxt.setBackground(new java.awt.Color(231, 246, 242));
         emailTxt.setForeground(new java.awt.Color(57, 91, 100));
+        emailTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailTxtFocusLost(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(231, 246, 242));
@@ -444,6 +463,51 @@ public class HospitalDirectory extends javax.swing.JPanel {
         // TODO add your handling code here:
         populateCities();
     }//GEN-LAST:event_cmbCommActionPerformed
+
+    private void hosIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hosIdFocusLost
+        // TODO add your handling code here:
+        if(!hosId.getText().equals("")){
+            List<Long> ssnList = SystemAdmin.hosDir.getHospitalList().stream().map(x -> x.getHospitalId()).toList();
+            if(ssnList.contains(Long.parseLong(hosId.getText()))){
+                JOptionPane.showMessageDialog(this, "HospitalId already taken.");
+            }
+        }
+    }//GEN-LAST:event_hosIdFocusLost
+
+    private void emailTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTxtFocusLost
+        // TODO add your handling code here:
+        if(!emailTxt.getText().equals("")){
+            String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"+ "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(emailTxt.getText());
+        
+            if(!matcher.matches()){
+                JOptionPane.showMessageDialog(null,"Enter a valid Email");
+                emailTxt.setText("");
+            }
+        }
+    }//GEN-LAST:event_emailTxtFocusLost
+
+    private void phoneTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneTxtKeyPressed
+        // TODO add your handling code here:
+        String phoneNumber = phoneTxt.getText();
+        int lengthOfPhoneNumber = phoneNumber.length();
+        char checkChar = evt.getKeyChar();
+        if (checkChar >= '0' && checkChar <= '9') {
+            if (lengthOfPhoneNumber < 10) {
+                phoneTxt.setEditable(true);
+            } else {
+                phoneTxt.setEditable(false);
+                JOptionPane.showMessageDialog(this, "Cannot add more than 10 Numbers!");
+            }
+        } else {
+            if (evt.getExtendedKeyCode() == KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode() == KeyEvent.VK_DELETE) {
+                phoneTxt.setEditable(true);
+            } else {
+                phoneTxt.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_phoneTxtKeyPressed
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) hosTbl.getModel();

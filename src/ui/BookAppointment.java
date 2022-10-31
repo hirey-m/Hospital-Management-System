@@ -5,6 +5,8 @@
 package ui;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Doctor;
@@ -116,9 +118,19 @@ public class BookAppointment extends javax.swing.JPanel {
 
         timeTxt.setBackground(new java.awt.Color(231, 246, 242));
         timeTxt.setForeground(new java.awt.Color(57, 91, 100));
+        timeTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                timeTxtFocusLost(evt);
+            }
+        });
 
         dateTxt.setBackground(new java.awt.Color(231, 246, 242));
         dateTxt.setForeground(new java.awt.Color(57, 91, 100));
+        dateTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dateTxtFocusLost(evt);
+            }
+        });
 
         loginLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         loginLabel2.setForeground(new java.awt.Color(231, 246, 242));
@@ -286,6 +298,34 @@ public class BookAppointment extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void timeTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_timeTxtFocusLost
+        // TODO add your handling code here:
+        if(!timeTxt.getText().equals("")){
+            String regexPattern = "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$";
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(timeTxt.getText());
+        
+            if(!matcher.matches()){
+                JOptionPane.showMessageDialog(null,"Enter a valid time in HH:MM fomat.");
+                timeTxt.setText("");
+            }
+        }
+    }//GEN-LAST:event_timeTxtFocusLost
+
+    private void dateTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dateTxtFocusLost
+        // TODO add your handling code here:
+        if(!dateTxt.getText().equals("")){
+            String regexPattern = "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$";
+            Pattern pattern = Pattern.compile(regexPattern);
+            Matcher matcher = pattern.matcher(dateTxt.getText());
+        
+            if(!matcher.matches()){
+                JOptionPane.showMessageDialog(null,"Enter a valid date in MM/DD/YYYY format.");
+                dateTxt.setText("");
+            }
+        }
+    }//GEN-LAST:event_dateTxtFocusLost
 
     private void populateTable(){
          DefaultTableModel model = (DefaultTableModel) appTbl.getModel();

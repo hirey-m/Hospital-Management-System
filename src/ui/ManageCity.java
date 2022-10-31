@@ -5,6 +5,7 @@
 package ui;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.City;
@@ -66,6 +67,11 @@ public class ManageCity extends javax.swing.JPanel {
 
         cityIdTxt.setBackground(new java.awt.Color(231, 246, 242));
         cityIdTxt.setForeground(new java.awt.Color(57, 91, 100));
+        cityIdTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cityIdTxtFocusLost(evt);
+            }
+        });
 
         cityTxt.setBackground(new java.awt.Color(231, 246, 242));
         cityTxt.setForeground(new java.awt.Color(57, 91, 100));
@@ -144,6 +150,7 @@ public class ManageCity extends javax.swing.JPanel {
         jScrollPane1.setViewportView(cityTbl);
 
         loginLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        loginLabel1.setForeground(new java.awt.Color(165, 201, 202));
         loginLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         loginLabel1.setText("City Manager");
 
@@ -309,6 +316,16 @@ public class ManageCity extends javax.swing.JPanel {
         comTxt.setText("");
         populateTable();
     }//GEN-LAST:event_createBtnActionPerformed
+
+    private void cityIdTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cityIdTxtFocusLost
+        // TODO add your handling code here:
+        if(!cityIdTxt.getText().equals("")){
+            List<Long> cityList = SystemAdmin.cityDir.getCityDir().stream().map(x -> x.getCityID()).toList();
+            if(cityList.contains(Long.parseLong(cityIdTxt.getText()))){
+                JOptionPane.showMessageDialog(this, "CityID already in use.");
+            }
+        }
+    }//GEN-LAST:event_cityIdTxtFocusLost
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) cityTbl.getModel();

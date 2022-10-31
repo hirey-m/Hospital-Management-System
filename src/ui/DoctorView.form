@@ -375,6 +375,9 @@
               <Color blue="64" green="5b" red="39" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="dobTxtFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -397,6 +400,9 @@
               <Color blue="64" green="5b" red="39" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailTxtFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -419,6 +425,9 @@
               <Color blue="64" green="5b" red="39" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="phoneTxtKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
@@ -429,7 +438,7 @@
               <Color blue="f2" green="f6" red="e7" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Address:"/>
+            <Property name="text" type="java.lang.String" value="House No."/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -453,6 +462,9 @@
               <Color blue="64" green="5b" red="39" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ssnTxtFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -475,6 +487,9 @@
               <Color blue="64" green="5b" red="39" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="houseTxtKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -632,6 +647,9 @@
               <Color blue="64" green="5b" red="39" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="zipTxtKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>

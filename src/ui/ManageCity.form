@@ -123,6 +123,9 @@
           <Color blue="64" green="5b" red="39" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cityIdTxtFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="cityTxt">
       <Properties>
@@ -257,6 +260,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ca" green="c9" red="a5" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="City Manager"/>

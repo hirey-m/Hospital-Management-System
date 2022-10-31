@@ -225,6 +225,9 @@
           <Color blue="64" green="5b" red="39" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="phoneTxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -259,6 +262,9 @@
           <Color blue="64" green="5b" red="39" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ssnTxtFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -281,6 +287,9 @@
           <Color blue="64" green="5b" red="39" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="houseTxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -430,6 +439,9 @@
           <Color blue="64" green="5b" red="39" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="dobTxtFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
@@ -452,6 +464,9 @@
           <Color blue="64" green="5b" red="39" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="emailTxtFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="femaleRB">
       <Properties>
@@ -507,6 +522,9 @@
           <Color blue="64" green="5b" red="39" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="zipTxtKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
