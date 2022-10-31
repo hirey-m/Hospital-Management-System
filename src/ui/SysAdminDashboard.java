@@ -33,6 +33,7 @@ public class SysAdminDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         splitPane = new javax.swing.JSplitPane();
         leftPane = new javax.swing.JPanel();
         historyBtn = new javax.swing.JButton();
@@ -47,6 +48,13 @@ public class SysAdminDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(44, 51, 51));
+
+        leftPane.setBackground(new java.awt.Color(44, 51, 51));
+        leftPane.setForeground(new java.awt.Color(57, 91, 100));
+
+        historyBtn.setBackground(new java.awt.Color(165, 201, 202));
+        historyBtn.setForeground(new java.awt.Color(57, 91, 100));
         historyBtn.setText("Encounter History");
         historyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +62,8 @@ public class SysAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        appBtn.setBackground(new java.awt.Color(165, 201, 202));
+        appBtn.setForeground(new java.awt.Color(57, 91, 100));
         appBtn.setText("Book Appointment");
         appBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +71,8 @@ public class SysAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        logoutBtn.setBackground(new java.awt.Color(165, 201, 202));
+        logoutBtn.setForeground(new java.awt.Color(57, 91, 100));
         logoutBtn.setText("Logout");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +80,8 @@ public class SysAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        doctorDir.setBackground(new java.awt.Color(165, 201, 202));
+        doctorDir.setForeground(new java.awt.Color(57, 91, 100));
         doctorDir.setText("Doctor Directory");
         doctorDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +89,8 @@ public class SysAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        patientDir.setBackground(new java.awt.Color(165, 201, 202));
+        patientDir.setForeground(new java.awt.Color(57, 91, 100));
         patientDir.setText("Patient Directory");
         patientDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +98,8 @@ public class SysAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        hosDirBtn.setBackground(new java.awt.Color(165, 201, 202));
+        hosDirBtn.setForeground(new java.awt.Color(57, 91, 100));
         hosDirBtn.setText("Hospital Directory");
         hosDirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +107,8 @@ public class SysAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        cityBtn.setBackground(new java.awt.Color(165, 201, 202));
+        cityBtn.setForeground(new java.awt.Color(57, 91, 100));
         cityBtn.setText("Manage City");
         cityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +116,8 @@ public class SysAdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        communityBtn.setBackground(new java.awt.Color(165, 201, 202));
+        communityBtn.setForeground(new java.awt.Color(57, 91, 100));
         communityBtn.setText("Mange Community");
         communityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,39 +163,52 @@ public class SysAdminDashboard extends javax.swing.JFrame {
                 .addComponent(appBtn)
                 .addGap(68, 68, 68)
                 .addComponent(logoutBtn)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(leftPane);
+
+        rightPane.setBackground(new java.awt.Color(44, 51, 51));
 
         javax.swing.GroupLayout rightPaneLayout = new javax.swing.GroupLayout(rightPane);
         rightPane.setLayout(rightPaneLayout);
         rightPaneLayout.setHorizontalGroup(
             rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 839, Short.MAX_VALUE)
+            .addGap(0, 832, Short.MAX_VALUE)
         );
         rightPaneLayout.setVerticalGroup(
             rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 788, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(rightPane);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(splitPane)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(splitPane)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(splitPane)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(splitPane)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -271,6 +306,7 @@ public class SysAdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton doctorDir;
     private javax.swing.JButton historyBtn;
     private javax.swing.JButton hosDirBtn;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel leftPane;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton patientDir;

@@ -65,10 +65,18 @@ public class BookAppointment extends javax.swing.JPanel {
         loginLabel5 = new javax.swing.JLabel();
         docNameTxt = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(44, 51, 51));
+
         loginLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        loginLabel1.setForeground(new java.awt.Color(165, 201, 202));
         loginLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginLabel1.setText("Appointment Scheduling");
 
+        searchField.setBackground(new java.awt.Color(231, 246, 242));
+        searchField.setForeground(new java.awt.Color(57, 91, 100));
+
+        searchBtn.setBackground(new java.awt.Color(165, 201, 202));
+        searchBtn.setForeground(new java.awt.Color(57, 91, 100));
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,8 +84,12 @@ public class BookAppointment extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(231, 246, 242));
         jLabel1.setText("Search Hospital:");
 
+        appTbl.setBackground(new java.awt.Color(231, 246, 242));
+        appTbl.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        appTbl.setForeground(new java.awt.Color(57, 91, 100));
         appTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -97,17 +109,29 @@ public class BookAppointment extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        appTbl.setSelectionBackground(new java.awt.Color(57, 91, 100));
+        appTbl.setSelectionForeground(new java.awt.Color(165, 201, 202));
         appTbl.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(appTbl);
 
+        timeTxt.setBackground(new java.awt.Color(231, 246, 242));
+        timeTxt.setForeground(new java.awt.Color(57, 91, 100));
+
+        dateTxt.setBackground(new java.awt.Color(231, 246, 242));
+        dateTxt.setForeground(new java.awt.Color(57, 91, 100));
+
         loginLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        loginLabel2.setForeground(new java.awt.Color(231, 246, 242));
         loginLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel2.setText("Date:");
 
         loginLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        loginLabel3.setForeground(new java.awt.Color(231, 246, 242));
         loginLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel3.setText("Time:");
 
+        bookBtn.setBackground(new java.awt.Color(165, 201, 202));
+        bookBtn.setForeground(new java.awt.Color(57, 91, 100));
         bookBtn.setText("Book Appointment");
         bookBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,10 +139,16 @@ public class BookAppointment extends javax.swing.JPanel {
             }
         });
 
+        patNameTxt.setBackground(new java.awt.Color(231, 246, 242));
+        patNameTxt.setForeground(new java.awt.Color(57, 91, 100));
+
         loginLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        loginLabel4.setForeground(new java.awt.Color(231, 246, 242));
         loginLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel4.setText("Patient Name:");
 
+        SelectBtn.setBackground(new java.awt.Color(165, 201, 202));
+        SelectBtn.setForeground(new java.awt.Color(57, 91, 100));
         SelectBtn.setText("Select");
         SelectBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,8 +157,12 @@ public class BookAppointment extends javax.swing.JPanel {
         });
 
         loginLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        loginLabel5.setForeground(new java.awt.Color(231, 246, 242));
         loginLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel5.setText("Doctor Name:");
+
+        docNameTxt.setBackground(new java.awt.Color(231, 246, 242));
+        docNameTxt.setForeground(new java.awt.Color(57, 91, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

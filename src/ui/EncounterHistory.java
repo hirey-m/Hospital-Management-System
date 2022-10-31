@@ -67,6 +67,11 @@ public class EncounterHistory extends javax.swing.JPanel {
         patientSearch = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(44, 51, 51));
+
+        encounterTbl.setBackground(new java.awt.Color(44, 51, 51));
+        encounterTbl.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        encounterTbl.setForeground(new java.awt.Color(231, 246, 242));
         encounterTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -97,29 +102,52 @@ public class EncounterHistory extends javax.swing.JPanel {
         jScrollPane1.setViewportView(encounterTbl);
 
         loginLabel.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        loginLabel.setForeground(new java.awt.Color(231, 246, 242));
         loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel.setText("Pulse:");
 
         loginLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        loginLabel1.setForeground(new java.awt.Color(165, 201, 202));
         loginLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         loginLabel1.setText("Encounter History");
 
         loginLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        loginLabel2.setForeground(new java.awt.Color(231, 246, 242));
         loginLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel2.setText("Body Temperature:");
 
         loginLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        loginLabel3.setForeground(new java.awt.Color(231, 246, 242));
         loginLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel3.setText("Blood pressure:");
 
         loginLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        loginLabel4.setForeground(new java.awt.Color(231, 246, 242));
         loginLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel4.setText("Diagnosis:");
 
         loginLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        loginLabel5.setForeground(new java.awt.Color(231, 246, 242));
         loginLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         loginLabel5.setText("Note:");
 
+        bpTxt.setBackground(new java.awt.Color(231, 246, 242));
+        bpTxt.setForeground(new java.awt.Color(57, 91, 100));
+
+        bodyTempTxt.setBackground(new java.awt.Color(231, 246, 242));
+        bodyTempTxt.setForeground(new java.awt.Color(57, 91, 100));
+
+        pulseTxt.setBackground(new java.awt.Color(231, 246, 242));
+        pulseTxt.setForeground(new java.awt.Color(57, 91, 100));
+
+        noteTxt.setBackground(new java.awt.Color(231, 246, 242));
+        noteTxt.setForeground(new java.awt.Color(57, 91, 100));
+
+        diagTxt.setBackground(new java.awt.Color(231, 246, 242));
+        diagTxt.setForeground(new java.awt.Color(57, 91, 100));
+
+        viewBtn.setBackground(new java.awt.Color(165, 201, 202));
+        viewBtn.setForeground(new java.awt.Color(57, 91, 100));
         viewBtn.setText("View");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +155,8 @@ public class EncounterHistory extends javax.swing.JPanel {
             }
         });
 
+        updateBtn.setBackground(new java.awt.Color(165, 201, 202));
+        updateBtn.setForeground(new java.awt.Color(57, 91, 100));
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +164,8 @@ public class EncounterHistory extends javax.swing.JPanel {
             }
         });
 
+        deleteBtn.setBackground(new java.awt.Color(165, 201, 202));
+        deleteBtn.setForeground(new java.awt.Color(57, 91, 100));
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,8 +173,14 @@ public class EncounterHistory extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(231, 246, 242));
         jLabel1.setText("Search Patient:");
 
+        patientSearch.setBackground(new java.awt.Color(231, 246, 242));
+        patientSearch.setForeground(new java.awt.Color(57, 91, 100));
+
+        searchBtn.setBackground(new java.awt.Color(165, 201, 202));
+        searchBtn.setForeground(new java.awt.Color(57, 91, 100));
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

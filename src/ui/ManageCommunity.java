@@ -55,6 +55,10 @@ public class ManageCommunity extends javax.swing.JPanel {
         cmbCity = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(44, 51, 51));
+
+        updateBtn.setBackground(new java.awt.Color(165, 201, 202));
+        updateBtn.setForeground(new java.awt.Color(57, 91, 100));
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +66,8 @@ public class ManageCommunity extends javax.swing.JPanel {
             }
         });
 
+        deleteBtn.setBackground(new java.awt.Color(165, 201, 202));
+        deleteBtn.setForeground(new java.awt.Color(57, 91, 100));
         deleteBtn.setText("Delete");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,18 +75,32 @@ public class ManageCommunity extends javax.swing.JPanel {
             }
         });
 
+        commId.setBackground(new java.awt.Color(231, 246, 242));
+        commId.setForeground(new java.awt.Color(57, 91, 100));
+
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(231, 246, 242));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Community ID:");
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(231, 246, 242));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Community Name:");
 
+        commTxt.setBackground(new java.awt.Color(231, 246, 242));
+        commTxt.setForeground(new java.awt.Color(57, 91, 100));
+
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(231, 246, 242));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Zip Code:");
 
+        zipTxt.setBackground(new java.awt.Color(231, 246, 242));
+        zipTxt.setForeground(new java.awt.Color(57, 91, 100));
+
+        createBtn.setBackground(new java.awt.Color(165, 201, 202));
+        createBtn.setForeground(new java.awt.Color(57, 91, 100));
         createBtn.setText("Create");
         createBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +108,8 @@ public class ManageCommunity extends javax.swing.JPanel {
             }
         });
 
+        viewBtn.setBackground(new java.awt.Color(165, 201, 202));
+        viewBtn.setForeground(new java.awt.Color(57, 91, 100));
         viewBtn.setText("View");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +117,9 @@ public class ManageCommunity extends javax.swing.JPanel {
             }
         });
 
+        commTable.setBackground(new java.awt.Color(44, 51, 51));
+        commTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        commTable.setForeground(new java.awt.Color(231, 246, 242));
         commTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -118,12 +143,16 @@ public class ManageCommunity extends javax.swing.JPanel {
         jScrollPane1.setViewportView(commTable);
 
         loginLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        loginLabel1.setForeground(new java.awt.Color(165, 201, 202));
         loginLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         loginLabel1.setText("Community Manager");
 
+        cmbCity.setBackground(new java.awt.Color(231, 246, 242));
+        cmbCity.setForeground(new java.awt.Color(57, 91, 100));
         cmbCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(231, 246, 242));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("City:");
 

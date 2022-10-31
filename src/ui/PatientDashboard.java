@@ -33,6 +33,7 @@ public class PatientDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         splitPane = new javax.swing.JSplitPane();
         leftPane = new javax.swing.JPanel();
         personInfo = new javax.swing.JButton();
@@ -43,6 +44,12 @@ public class PatientDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(44, 51, 51));
+
+        leftPane.setBackground(new java.awt.Color(44, 51, 51));
+
+        personInfo.setBackground(new java.awt.Color(57, 91, 100));
+        personInfo.setForeground(new java.awt.Color(231, 246, 242));
         personInfo.setText("Personal Infomation");
         personInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +57,8 @@ public class PatientDashboard extends javax.swing.JFrame {
             }
         });
 
+        appBtn.setBackground(new java.awt.Color(57, 91, 100));
+        appBtn.setForeground(new java.awt.Color(231, 246, 242));
         appBtn.setText("Book Appointment");
         appBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +66,8 @@ public class PatientDashboard extends javax.swing.JFrame {
             }
         });
 
+        logoutBtn.setBackground(new java.awt.Color(57, 91, 100));
+        logoutBtn.setForeground(new java.awt.Color(231, 246, 242));
         logoutBtn.setText("Logout");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +75,8 @@ public class PatientDashboard extends javax.swing.JFrame {
             }
         });
 
+        historyBtn.setBackground(new java.awt.Color(57, 91, 100));
+        historyBtn.setForeground(new java.awt.Color(231, 246, 242));
         historyBtn.setText("Encounter History");
         historyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,8 +97,7 @@ public class PatientDashboard extends javax.swing.JFrame {
             .addGroup(leftPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(leftPaneLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(historyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(historyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)))
         );
         leftPaneLayout.setVerticalGroup(
             leftPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,44 +108,51 @@ public class PatientDashboard extends javax.swing.JFrame {
                 .addComponent(appBtn)
                 .addGap(33, 33, 33)
                 .addComponent(logoutBtn)
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addContainerGap(381, Short.MAX_VALUE))
             .addGroup(leftPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(leftPaneLayout.createSequentialGroup()
                     .addGap(285, 285, 285)
                     .addComponent(historyBtn)
-                    .addContainerGap(480, Short.MAX_VALUE)))
+                    .addContainerGap(492, Short.MAX_VALUE)))
         );
 
         splitPane.setLeftComponent(leftPane);
+
+        rightPane.setBackground(new java.awt.Color(44, 51, 51));
 
         javax.swing.GroupLayout rightPaneLayout = new javax.swing.GroupLayout(rightPane);
         rightPane.setLayout(rightPaneLayout);
         rightPaneLayout.setHorizontalGroup(
             rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 838, Short.MAX_VALUE)
+            .addGap(0, 845, Short.MAX_VALUE)
         );
         rightPaneLayout.setVerticalGroup(
             rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 788, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(rightPane);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(splitPane)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(splitPane)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -203,6 +222,7 @@ public class PatientDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton appBtn;
     private javax.swing.JButton historyBtn;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel leftPane;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton personInfo;

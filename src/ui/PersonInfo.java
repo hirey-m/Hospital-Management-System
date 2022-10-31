@@ -92,44 +92,72 @@ public class PersonInfo extends javax.swing.JPanel {
         zipTxt = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(44, 51, 51));
+
         loginLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        loginLabel1.setForeground(new java.awt.Color(165, 201, 202));
         loginLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginLabel1.setText("Personal Information");
 
+        nameTxt.setBackground(new java.awt.Color(231, 246, 242));
+
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(231, 246, 242));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Date of Birth:");
 
+        dobTxt.setBackground(new java.awt.Color(231, 246, 242));
+
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(231, 246, 242));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Email:");
 
+        emailTxt.setBackground(new java.awt.Color(231, 246, 242));
+
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(231, 246, 242));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Phone Number:");
 
+        phoneTxt.setBackground(new java.awt.Color(231, 246, 242));
+
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(231, 246, 242));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("House:");
 
+        houseTxt.setBackground(new java.awt.Color(231, 246, 242));
+        houseTxt.setForeground(new java.awt.Color(57, 91, 100));
+
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(231, 246, 242));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Gender:");
 
+        femaleRB.setForeground(new java.awt.Color(231, 246, 242));
         femaleRB.setText("Female");
 
+        maleRB.setForeground(new java.awt.Color(231, 246, 242));
         maleRB.setText("Male");
 
+        otherRB.setForeground(new java.awt.Color(231, 246, 242));
         otherRB.setText("Other");
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(231, 246, 242));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("SSN:");
 
+        ssnTxt.setBackground(new java.awt.Color(231, 246, 242));
+
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(231, 246, 242));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name:");
 
+        updateBtn.setBackground(new java.awt.Color(165, 201, 202));
+        updateBtn.setForeground(new java.awt.Color(57, 91, 100));
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,12 +166,20 @@ public class PersonInfo extends javax.swing.JPanel {
         });
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(231, 246, 242));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Street:");
 
+        streetTxt.setBackground(new java.awt.Color(231, 246, 242));
+        streetTxt.setForeground(new java.awt.Color(57, 91, 100));
+
+        zipTxt.setBackground(new java.awt.Color(231, 246, 242));
+        zipTxt.setForeground(new java.awt.Color(57, 91, 100));
+
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(231, 246, 242));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("ZIp:");
+        jLabel10.setText("Zip:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

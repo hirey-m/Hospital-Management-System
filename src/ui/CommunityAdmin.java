@@ -31,6 +31,7 @@ public class CommunityAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         splitPane = new javax.swing.JSplitPane();
         leftPane = new javax.swing.JPanel();
         cityBtn = new javax.swing.JButton();
@@ -40,6 +41,12 @@ public class CommunityAdmin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(44, 51, 51));
+
+        leftPane.setBackground(new java.awt.Color(44, 51, 51));
+
+        cityBtn.setBackground(new java.awt.Color(165, 201, 202));
+        cityBtn.setForeground(new java.awt.Color(57, 91, 100));
         cityBtn.setText("Manage City");
         cityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +54,8 @@ public class CommunityAdmin extends javax.swing.JFrame {
             }
         });
 
+        communityBtn.setBackground(new java.awt.Color(165, 201, 202));
+        communityBtn.setForeground(new java.awt.Color(57, 91, 100));
         communityBtn.setText("Mange Community");
         communityBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +63,8 @@ public class CommunityAdmin extends javax.swing.JFrame {
             }
         });
 
+        logoutBtn.setBackground(new java.awt.Color(165, 201, 202));
+        logoutBtn.setForeground(new java.awt.Color(57, 91, 100));
         logoutBtn.setText("Logout");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,39 +89,46 @@ public class CommunityAdmin extends javax.swing.JFrame {
                 .addComponent(communityBtn)
                 .addGap(136, 136, 136)
                 .addComponent(logoutBtn)
-                .addContainerGap(359, Short.MAX_VALUE))
+                .addContainerGap(371, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(leftPane);
+
+        rightPane.setBackground(new java.awt.Color(44, 51, 51));
 
         javax.swing.GroupLayout rightPaneLayout = new javax.swing.GroupLayout(rightPane);
         rightPane.setLayout(rightPaneLayout);
         rightPaneLayout.setHorizontalGroup(
             rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 844, Short.MAX_VALUE)
+            .addGap(0, 856, Short.MAX_VALUE)
         );
         rightPaneLayout.setVerticalGroup(
             rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 788, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(rightPane);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(splitPane)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(splitPane)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -174,6 +192,7 @@ public class CommunityAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cityBtn;
     private javax.swing.JButton communityBtn;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel leftPane;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JPanel rightPane;
