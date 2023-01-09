@@ -1,4 +1,4 @@
-# Hirey_Manav_002786706_Assignment2
+# Hospital-Management-System
 
 This application is a platform for people to find medical resource in different city and 
 community.<br>  
